@@ -1,5 +1,5 @@
 // ===== S1 FAMILY DANCE CENTER - MAIN SCRIPT =====
-// Версия без глобального DOM объекта
+// Версия с обновленным функционалом
 
 // Главная функция инициализации
 function initializeApp() {
@@ -19,6 +19,7 @@ function initializeApp() {
         setupLazyLoading();
         setupYearUpdate(elements.yearElements);
         setupScrollToTop(elements.scrollToTop);
+        setupReviewsSlider(); // Новый слайдер отзывов
         
         // Добавляем обработчики событий
         addEventListeners(elements);
@@ -42,6 +43,11 @@ function getAllElements() {
         
         // Hero
         statNumbers: document.querySelectorAll('.stat-number'),
+        
+        // Reviews Slider
+        reviewsTrack: document.getElementById('reviewsTrack'),
+        reviewsPrev: document.getElementById('reviewsPrev'),
+        reviewsNext: document.getElementById('reviewsNext'),
         
         // Footer
         yearElements: document.querySelectorAll('.current-year'),
@@ -181,7 +187,7 @@ function setupScrollAnimations() {
     
     // Наблюдаем за элементами которые нужно анимировать
     const animatedElements = document.querySelectorAll(
-        '.direction-card, .group-card, .team-card, .gallery-item, .achievement-category, .contact-card'
+        '.direction-card, .group-card, .team-card, .gallery-item, .achievement-category, .contact-card, .review-item'
     );
     
     animatedElements.forEach(element => observer.observe(element));
@@ -289,6 +295,82 @@ function setupScrollToTop(scrollToTopBtn) {
             behavior: 'smooth'
         });
     });
+}
+
+// Слайдер отзывов
+function setupReviewsSlider() {
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.getElementById('reviewsPrev');
+    const nextBtn = document.getElementById('reviewsNext');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    const items = document.querySelectorAll('.review-item');
+    const itemWidth = items[0]?.offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
+    let currentPosition = 0;
+    const maxPosition = -(items.length - 3) * itemWidth;
+    
+    // Обновление позиции слайдера
+    const updateSliderPosition = () => {
+        track.style.transform = `translateX(${currentPosition}px)`;
+        
+        // Блокируем кнопки на границах
+        prevBtn.disabled = currentPosition >= 0;
+        nextBtn.disabled = currentPosition <= maxPosition;
+    };
+    
+    // Следующий слайд
+    nextBtn.addEventListener('click', () => {
+        if (currentPosition > maxPosition) {
+            currentPosition -= itemWidth * 3; // Прокрутка по 3 элемента
+            if (currentPosition < maxPosition) currentPosition = maxPosition;
+            updateSliderPosition();
+        }
+    });
+    
+    // Предыдущий слайд
+    prevBtn.addEventListener('click', () => {
+        if (currentPosition < 0) {
+            currentPosition += itemWidth * 3; // Прокрутка по 3 элемента
+            if (currentPosition > 0) currentPosition = 0;
+            updateSliderPosition();
+        }
+    });
+    
+    // Автопрокрутка
+    let autoSlideInterval;
+    
+    const startAutoSlide = () => {
+        autoSlideInterval = setInterval(() => {
+            if (currentPosition <= maxPosition) {
+                currentPosition = 0; // Возврат к началу
+            } else {
+                currentPosition -= itemWidth * 3;
+                if (currentPosition < maxPosition) currentPosition = maxPosition;
+            }
+            updateSliderPosition();
+        }, 5000); // 5 секунд
+    };
+    
+    const stopAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+    };
+    
+    // Запуск автопрокрутки
+    startAutoSlide();
+    
+    // Остановка при наведении
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
+    
+    // Остановка при фокусе на элементах управления
+    prevBtn.addEventListener('focus', stopAutoSlide);
+    nextBtn.addEventListener('focus', stopAutoSlide);
+    prevBtn.addEventListener('blur', startAutoSlide);
+    nextBtn.addEventListener('blur', startAutoSlide);
+    
+    // Инициализация
+    updateSliderPosition();
 }
 
 // Дополнительные обработчики событий
