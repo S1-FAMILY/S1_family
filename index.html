@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1 family - Центр танцевального искусства</title>
+    
+    <!-- Meta для SEO -->
+    <meta name="description" content="Профессиональная школа танцев S1 family. Обучение Hip-Hop, Break Dance, Afro, Freestyle для всех возрастов. Бесплатное пробное занятие!">
+    <meta name="keywords" content="школа танцев, танцы, хип-хоп, брейк-данс, афро, фристайл, обучение танцам">
+    <meta name="author" content="S1 Family Dance Center">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="лого-для-сайта-шапки.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="лого-для-сайта-шапки.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="лого-для-сайта-шапки.png">
+    
+    <!-- Для мобильных устройств -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <span class="logo-s1">S1</span>
+                <span class="logo-family">family</span>
+            </a>
+
+            <nav class="nav" aria-label="Основное меню">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link" data-nav="home">Главная</a></li>
+                    <li><a href="#about" class="nav-link" data-nav="about">О нас</a></li>
+                    <li><a href="#directions" class="nav-link" data-nav="directions">Направления</a></li>
+                    <li><a href="#groups" class="nav-link" data-nav="groups">Группы</a></li>
+                    <li><a href="#team" class="nav-link" data-nav="team">Тренеры</a></li>
+                    <li><a href="#achievements" class="nav-link" data-nav="achievements">Достижения</a></li>
+                    <li><a href="#gallery" class="nav-link" data-nav="gallery">Галерея</a></li>
+                    <li><a href="#contact" class="nav-link" data-nav="contact">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu-header">
+            <a href="#home" class="logo">
+                <span class="logo-s1">S1</span>
+                <span class="logo-family">family</span>
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="#home" class="mobile-nav-link" data-nav="home">Главная</a></li>
+            <li><a href="#about" class="mobile-nav-link" data-nav="about">О нас</a></li>
+            <li><a href="#directions" class="mobile-nav-link" data-nav="directions">Направления</a></li>
+            <li><a href="#groups" class="mobile-nav-link" data-nav="groups">Группы</a></li>
+            <li><a href="#team" class="mobile-nav-link" data-nav="team">Тренеры</a></li>
+            <li><a href="#achievements" class="mobile-nav-link" data-nav="achievements">Достижения</a></li>
+            <li><a href="#gallery" class="mobile-nav-link" data-nav="gallery">Галерея</a></li>
+            <li><a href="#contact" class="mobile-nav-link" data-nav="contact">Контакты</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <a href="tel:+79991234567" class="mobile-phone">
+                <i class="fas fa-phone"></i> +7 (999) 123-45-67
+            </a>
+            <a href="mailto:info@s1family.ru" class="mobile-email">
+                <i class="fas fa-envelope"></i> info@s1family.ru
+            </a>
+            <div class="mobile-social">
+                <a href="https://vk.com/s1family" class="social-link" target="_blank" rel="noopener" aria-label="ВКонтакте">
+                    <i class="fab fa-vk"></i>
+                </a>
+                <a href="https://t.me/s1family" class="social-link" target="_blank" rel="noopener" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://instagram.com/s1family" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <div class="title-line">
+                    <span class="logo-s1-large">S1</span>
+                    <span class="logo-family-large">family</span>
+                </div>
+                <span class="title-line subtitle">ЦЕНТР ТАНЦЕВАЛЬНОГО ИСКУССТВА</span>
+            </h1>
+                <p class="hero-subtitle">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Записаться на пробное
+                    </a>
+                    <a href="#directions" class="btn btn-outline">
+                        <i class="fas fa-directions"></i> Направления
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="13">0</span>
+                        <span class="stat-label">лет опыта</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">тренеров</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">учеников</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">наград</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Танцевальный коллектив S1 family на выступлении" 
+                         class="hero-logo" 
+                         loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">О НАС</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>БОЛЬШЕ ЧЕМ ПРОСТО ТАНЦЫ</h3>
+                    <p>Основанный в 2013 году, наш центр стал домом для сотен танцоров, которые нашли здесь не только профессиональное обучение, но и настоящую семью.</p>
+                    <p>Мы создаем пространство, где каждый может раскрыть свой потенциал, обрести уверенность в себе и найти единомышленников.</p>
+                    <p>Наша миссия — воспитывать не только техничных танцоров, но и сильных, уверенных личностей, готовых покорять любые вершины.</p>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Тренировка в студии S1 family" 
+                             class="image-main" 
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directions Section -->
+    <section class="section directions gray-section" id="directions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">НАПРАВЛЕНИЯ</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="directions-grid">
+                <div class="direction-card">
+                    <div class="direction-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Hip-Hop</h3>
+                    <p>Основа уличной культуры. Развиваем чувство ритма, уверенность и индивидуальный стиль в классическом хип-хопе.</p>
+                </div>
+                
+                <div class="direction-card">
+                    <div class="direction-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3>Break Dance</h3>
+                    <p>Акробатический уличный танец, включенный в программу Олимпийских игр. Силовые элементы, фризы и работа на полу.</p>
+                </div>
+                
+                <div class="direction-card">
+                    <div class="direction-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Freestyle<br>(Hip-Hop)</h3>
+                    <p>Свободная импровизация в стиле хип-хоп. Развитие креативности, музыкальности и спонтанного самовыражения.</p>
+                </div>
+                
+                <div class="direction-card">
+                    <div class="direction-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Afro</h3>
+                    <p>Энергичные танцы африканских народов. Развитие чувства ритма, пластики и эмоциональной выразительности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Groups Section -->
+    <section class="section groups white-section" id="groups">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГРУППЫ</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="groups-container">
+                <div class="groups-grid">
+                    <!-- Break Dance группы -->
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <h4>Break Dance Kids</h4>
+                        <p class="group-age">5-7 лет</p>
+                        <p class="group-level">Начальный уровень</p>
+                        <div class="group-badge">🔥 Популярно</div>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <h4>Break Dance</h4>
+                        <p class="group-age">7-15 лет</p>
+                        <p class="group-level">Средний уровень</p>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <h4>Break Dance Pro</h4>
+                        <p class="group-age">15+ лет</p>
+                        <p class="group-level">Продвинутый уровень</p>
+                        <div class="group-badge">🏆 Профи</div>
+                    </div>
+                    
+                    <!-- Hip-Hop группы -->
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Hip-Hop Kids</h4>
+                        <p class="group-age">5-7 лет</p>
+                        <p class="group-level">Начальный уровень</p>
+                        <div class="group-badge">⭐ Для малышей</div>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Hip-Hop Junior</h4>
+                        <p class="group-age">7-11 лет</p>
+                        <p class="group-level">Базовый уровень</p>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Hip-Hop</h4>
+                        <p class="group-age">12-15 лет</p>
+                        <p class="group-level">Средний уровень</p>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Hip-Hop Pro</h4>
+                        <p class="group-age">16+ лет</p>
+                        <p class="group-level">Продвинутый уровень</p>
+                        <div class="group-badge">🏆 Профи</div>
+                    </div>
+                    
+                    <!-- Afro и Freestyle -->
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h4>Afro</h4>
+                        <p class="group-age">7+ лет</p>
+                        <p class="group-level">Все уровни</p>
+                        <div class="group-badge">🌍 Энергия</div>
+                    </div>
+                    
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Freestyle</h4>
+                        <p class="group-age">7+ лет</p>
+                        <p class="group-level">Все уровни</p>
+                        <div class="group-badge">✨ Импровизация</div>
+                    </div>
+                    
+                    <!-- Индивидуальные -->
+                    <div class="group-card">
+                        <div class="group-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4>Индивидуальные занятия</h4>
+                        <p class="group-age">Любой возраст</p>
+                        <p class="group-level">Персональный подход</p>
+                        <div class="group-badge">👑 VIP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section (8 тренеров) -->
+    <section class="section team black-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">НАША КОМАНДА</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Профессиональные тренеры с большим опытом и достижениями</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Тренер 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Александр Иванов, хореограф по Hip-Hop" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Александр Иванов</h3>
+                        <div class="team-position">Hip-Hop</div>
+                        <p><strong>Опыт:</strong> 15 лет</p>
+                        <p><strong>Специализация:</strong> Дети 7-15 лет, взрослые группы</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 2 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Мария Петрова, хореограф" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Мария Петрова</h3>
+                        <div class="team-position">Vogue & Dancehall</div>
+                        <p><strong>Опыт:</strong> 12 лет</p>
+                        <p><strong>Специализация:</strong> Девичьи группы, подростки</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 3 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Дмитрий Смирнов, хореограф по Break Dance" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Дмитрий Смирнов</h3>
+                        <div class="team-position">Break Dance</div>
+                        <p><strong>Опыт:</strong> 18 лет</p>
+                        <p><strong>Специализация:</strong> Мальчики 10+, продвинутые группы</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 4 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Екатерина Федотова, руководитель центра" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Екатерина Федотова</h3>
+                        <div class="team-position">Руководитель центра</div>
+                        <p><strong>Опыт:</strong> 20 лет</p>
+                        <p><strong>Специализация:</strong> Все направления, методика преподавания</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 5 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Анна Сидорова, хореограф" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Анна Сидорова</h3>
+                        <div class="team-position">Afro & Dancehall</div>
+                        <p><strong>Опыт:</strong> 10 лет</p>
+                        <p><strong>Специализация:</strong> Энергетические стили, взрослые группы</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 6 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Максим Кузнецов, хореограф" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Максим Кузнецов</h3>
+                        <div class="team-position">Freestyle & Popping</div>
+                        <p><strong>Опыт:</strong> 14 лет</p>
+                        <p><strong>Специализация:</strong> Импровизация, баттлы, подростки</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 7 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Ольга Васильева, хореограф" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ольга Васильева</h3>
+                        <div class="team-position">Hip-Hop Kids</div>
+                        <p><strong>Опыт:</strong> 8 лет</p>
+                        <p><strong>Специализация:</strong> Дети 5-10 лет, начальная подготовка</p>
+                    </div>
+                </div>
+                
+                <!-- Тренер 8 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Игорь Николаев, хореограф" 
+                             loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Игорь Николаев</h3>
+                        <div class="team-position">Break Dance Pro</div>
+                        <p><strong>Опыт:</strong> 16 лет</p>
+                        <p><strong>Специализация:</strong> Профессиональные группы, соревнования</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section (3 блока) -->
+    <section class="section achievements silver-section" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">НАШИ ДОСТИЖЕНИЯ</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="achievements-grid">
+                <!-- Блок 1 -->
+                <div class="achievement-category">
+                    <h3><i class="fas fa-trophy"></i> Соревнования</h3>
+                    <ul class="achievement-list">
+                        <li>Действующие Чемпионы России 2025 (г. Санкт-Петербург)</li>
+                        <li>Победители ROLTWORLD 2025 Junior Crew</li>
+                        <li>Чемпионы России по хип-хопу по версии ОРТО: 2013-2019, 2021, 2022, 2024 года</li>
+                        <li>Чемпионы Европы по хип-хопу, паппингу, All styles баттлам: 2012-2014, 2016-2019 года</li>
+                        <li>Чемпионы мира по хип-хопу и паппингу 2017, 2018 года</li>
+                        <li>Абсолютные победители Всемирной танцевальной Олимпиады 2023 года в общекомандном зачете</li>
+                    </ul>
+                </div>
+                
+                <!-- Блок 2 -->
+                <div class="achievement-category">
+                    <h3><i class="fas fa-tv"></i> Телевидение</h3>
+                    <ul class="achievement-list">
+                        <li>Участники телепроекта «Новые танцы» на ТНТ (1 и 2 сезоны)</li>
+                        <li>Участники ТВ шоу «Лучше всех» на 1 канале</li>
+                        <li>Участники Гала-концерта «Поколение Next» на МУЗ ТВ</li>
+                        <li>Участники проекта «Танцы со звездами»</li>
+                    </ul>
+                </div>
+                
+                <!-- Блок 3 -->
+                <div class="achievement-category">
+                    <h3><i class="fas fa-star"></i> Сценические выступления</h3>
+                    <ul class="achievement-list">
+                        <li>Участники открытия Студ. весны стран БРИКС И ШОС 2019 год</li>
+                        <li>Участники открытия Всероссийского фестиваля работающей молодежи «На высоте»</li>
+                        <li>Артисты открытия и закрытия Всероссийской школьной Весны 2023, 2025</li>
+                        <li>Артисты открытия и закрытия Всероссийской Студенческой Весны 2024</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (6 фото) -->
+    <section class="section gallery black-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГАЛЕРЕЯ</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Фото 1 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Тренировка в студии" 
+                         loading="lazy">
+                </div>
+                
+                <!-- Фото 2 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Выступление на чемпионате" 
+                         loading="lazy">
+                </div>
+                
+                <!-- Фото 3 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546636889-ba9fdd63583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Командное фото" 
+                         loading="lazy">
+                </div>
+                
+                <!-- Фото 4 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Победа на турнире" 
+                         loading="lazy">
+                </div>
+                
+                <!-- Фото 5 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517430449-5f2c0fda9b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Мастер-класс" 
+                         loading="lazy">
+                </div>
+                
+                <!-- Фото 6 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514894780887-121968d00567?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Гала-концерт" 
+                         loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact white-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">КОНТАКТЫ</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Свяжитесь с нами для записи на пробное занятие</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>НАША СТУДИЯ</h3>
+                            <p><strong>Адрес:</strong> ул. Танцевальная, 15</p>
+                            <p class="contact-note">Ближайшая станция метро: Танцевальная</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>ТЕЛЕФОНЫ</h3>
+                            <p><strong>Администратор:</strong> +7 (999) 123-45-67</p>
+                            <p><strong>Тренерский отдел:</strong> +7 (999) 765-43-21</p>
+                            <p class="contact-note">Звоните с 10:00 до 22:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>EMAIL</h3>
+                            <p><strong>Общие вопросы:</strong> info@s1family.ru</p>
+                            <p><strong>Запись на занятия:</strong> booking@s1family.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>ЧАСЫ РАБОТЫ</h3>
+                            <p><strong>Пн-Пт:</strong> 10:00-22:00</p>
+                            <p><strong>Сб-Вс:</strong> 9:00-20:00</p>
+                            <p class="contact-note">Первое занятие всегда бесплатно!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h3>МЫ В СОЦСЕТЯХ</h3>
+                        <div class="social-links">
+                            <a href="https://vk.com/s1family" class="social-link" target="_blank" rel="noopener">
+                                <i class="fab fa-vk"></i>
+                                ВКонтакте
+                            </a>
+                            <a href="https://t.me/s1family" class="social-link" target="_blank" rel="noopener">
+                                <i class="fab fa-telegram"></i>
+                                Telegram
+                            </a>
+                            <a href="https://instagram.com/s1family" class="social-link" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h3>ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ</h3>
+                        <p>Заполните форму и мы свяжемся с вами для уточнения деталей</p>
+                    </div>
+                    
+                    <!-- Яндекс Форма -->
+                    <div class="yandex-form-placeholder">
+                        <iframe src="https://forms.yandex.ru/cloud/695f604f505690160b902b48" 
+                                width="100%" 
+                                height="600" 
+                                frameborder="0" 
+                                marginheight="0" 
+                                marginwidth="0"
+                                title="Форма записи на пробное занятие"
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                    
+                    <div class="form-note">
+                        <p><i class="fas fa-info-circle"></i> После отправки формы наш менеджер свяжется с вами в течение 2 часов для подтверждения записи.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-s1">S1</span>
+                        <span class="logo-family">family</span>
+                    </div>
+                    <p class="footer-description">
+                        Центр танцевального искусства S1 family. Профессиональное обучение танцам для всех возрастов. Стань частью нашей семьи!
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://vk.com/s1family" class="social-icon" target="_blank" rel="noopener" aria-label="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="https://t.me/s1family" class="social-icon" target="_blank" rel="noopener" aria-label="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://instagram.com/s1family" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">НАВИГАЦИЯ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#directions">Направления</a></li>
+                        <li><a href="#groups">Группы</a></li>
+                        <li><a href="#team">Тренеры</a></li>
+                        <li><a href="#gallery">Галерея</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">КОНТАКТЫ</h3>
+                    <ul class="footer-contacts">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ул. Танцевальная, 15</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (999) 123-45-67</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@s1family.ru</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">РАСПИСАНИЕ</h3>
+                    <div class="footer-schedule">
+                        <p><strong>Пн-Пт:</strong> 10:00-22:00</p>
+                        <p><strong>Сб-Вс:</strong> 9:00-20:00</p>
+                        <p><strong>Первое занятие:</strong> Бесплатно!</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary btn-small">
+                        <i class="fas fa-calendar-alt"></i> Записаться
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; <span class="current-year">2026</span> S1 family — Центр танцевального искусства. Все права защищены.
+                </p>
+                <p class="author">Сайт разработан: Андреев Всеволод</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
