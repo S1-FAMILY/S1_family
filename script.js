@@ -19,7 +19,7 @@ function initializeApp() {
         setupLazyLoading();
         setupYearUpdate(elements.yearElements);
         setupScrollToTop(elements.scrollToTop);
-        setupReviewsSlider(); // Новый слайдер отзывов
+        setupReviewsSlider(); // Исправленный слайдер отзывов
         
         // Добавляем обработчики событий
         addEventListeners(elements);
@@ -297,77 +297,73 @@ function setupScrollToTop(scrollToTopBtn) {
     });
 }
 
-// Слайдер отзывов (улучшенная версия)
+// Слайдер отзывов (исправленная версия)
 function setupReviewsSlider() {
     const track = document.getElementById('reviewsTrack');
     const prevBtn = document.getElementById('reviewsPrev');
     const nextBtn = document.getElementById('reviewsNext');
     
-    if (!track || !prevBtn || !nextBtn) return;
+    if (!track || !prevBtn || !nextBtn) {
+        console.log('❌ Элементы слайдера не найдены');
+        return;
+    }
     
     const items = document.querySelectorAll('.review-item');
-    if (items.length === 0) return;
+    if (items.length === 0) {
+        console.log('❌ Элементы отзывов не найдены');
+        return;
+    }
     
-    // Инициализация изображений для ленивой загрузки
-    const reviewImages = document.querySelectorAll('.review-item img');
-    reviewImages.forEach(img => {
-        if (img.src.includes('placeholder.com')) {
-            // Добавляем небольшую задержку для имитации загрузки
-            setTimeout(() => {
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                    img.src = img.src.replace('placeholder.com', 'picsum.photos');
-                    img.onload = () => {
-                        img.style.opacity = '1';
-                    };
-                }, 100);
-            }, Math.random() * 1000);
-        }
-    });
+    console.log(`✅ Найдено ${items.length} отзывов`);
     
-    const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
+    // Рассчитываем ширину элемента с учетом gap
+    const trackStyles = getComputedStyle(track);
+    const gap = parseInt(trackStyles.gap) || 20;
+    const itemWidth = items[0].offsetWidth + gap;
+    console.log(`✅ Ширина элемента: ${itemWidth}px`);
+    
     let currentPosition = 0;
-    const maxPosition = -(items.length - 3) * itemWidth;
+    const trackWidth = track.offsetWidth;
+    const itemsPerView = Math.floor(trackWidth / itemWidth) || 1;
+    const maxPosition = -(items.length - itemsPerView) * itemWidth;
     
-    // Обновление позиции слайдера
+    console.log(`✅ Элементов на экране: ${itemsPerView}, Макс. позиция: ${maxPosition}px`);
+    
+    // Функция для обновления позиции
     const updateSliderPosition = () => {
         track.style.transform = `translateX(${currentPosition}px)`;
+        track.style.transition = 'transform 0.5s ease';
         
-        // Блокируем кнопки на границах
-        prevBtn.disabled = currentPosition >= 0;
-        nextBtn.disabled = currentPosition <= maxPosition;
+        // Обновляем состояние кнопок
+        const isAtStart = currentPosition >= 0;
+        const isAtEnd = currentPosition <= maxPosition;
         
-        // Добавляем/убираем класс disabled для стилизации
-        if (currentPosition >= 0) {
-            prevBtn.classList.add('disabled');
-        } else {
-            prevBtn.classList.remove('disabled');
-        }
+        prevBtn.disabled = isAtStart;
+        nextBtn.disabled = isAtEnd;
         
-        if (currentPosition <= maxPosition) {
-            nextBtn.classList.add('disabled');
-        } else {
-            nextBtn.classList.remove('disabled');
-        }
+        // Обновляем классы для стилизации
+        prevBtn.classList.toggle('disabled', isAtStart);
+        nextBtn.classList.toggle('disabled', isAtEnd);
     };
     
-    // Следующий слайд
+    // Кнопка "Далее"
     nextBtn.addEventListener('click', () => {
         if (currentPosition > maxPosition) {
-            const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
-            currentPosition -= itemWidth * itemsToScroll;
+            const moveBy = itemsPerView * itemWidth;
+            currentPosition -= moveBy;
             if (currentPosition < maxPosition) currentPosition = maxPosition;
+            console.log(`➡️ Следующий слайд. Позиция: ${currentPosition}px`);
             updateSliderPosition();
         }
     });
     
-    // Предыдущий слайд
+    // Кнопка "Назад"
     prevBtn.addEventListener('click', () => {
         if (currentPosition < 0) {
-            const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
-            currentPosition += itemWidth * itemsToScroll;
+            const moveBy = itemsPerView * itemWidth;
+            currentPosition += moveBy;
             if (currentPosition > 0) currentPosition = 0;
+            console.log(`⬅️ Предыдущий слайд. Позиция: ${currentPosition}px`);
             updateSliderPosition();
         }
     });
@@ -376,34 +372,38 @@ function setupReviewsSlider() {
     let autoSlideInterval;
     
     const startAutoSlide = () => {
+        stopAutoSlide(); // Останавливаем предыдущий интервал если есть
         autoSlideInterval = setInterval(() => {
             if (currentPosition <= maxPosition) {
-                currentPosition = 0; // Возврат к началу
+                // Возврат к началу с анимацией
+                currentPosition = 0;
             } else {
-                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
-                currentPosition -= itemWidth * itemsToScroll;
+                const moveBy = itemsPerView * itemWidth;
+                currentPosition -= moveBy;
                 if (currentPosition < maxPosition) currentPosition = maxPosition;
             }
+            console.log(`🔄 Автопрокрутка. Позиция: ${currentPosition}px`);
             updateSliderPosition();
         }, 5000); // 5 секунд
     };
     
     const stopAutoSlide = () => {
-        clearInterval(autoSlideInterval);
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
     };
     
-    // Запуск автопрокрутки
+    // Запускаем автопрокрутку
     startAutoSlide();
     
-    // Остановка при наведении
+    // Останавливаем при взаимодействии
     track.addEventListener('mouseenter', stopAutoSlide);
     track.addEventListener('mouseleave', startAutoSlide);
-    
-    // Остановка при фокусе на элементах управления
-    prevBtn.addEventListener('focus', stopAutoSlide);
-    nextBtn.addEventListener('focus', stopAutoSlide);
-    prevBtn.addEventListener('blur', startAutoSlide);
-    nextBtn.addEventListener('blur', startAutoSlide);
+    prevBtn.addEventListener('mouseenter', stopAutoSlide);
+    nextBtn.addEventListener('mouseenter', stopAutoSlide);
+    prevBtn.addEventListener('mouseleave', startAutoSlide);
+    nextBtn.addEventListener('mouseleave', startAutoSlide);
     
     // Обработка свайпа на мобильных
     let startX = 0;
@@ -414,12 +414,15 @@ function setupReviewsSlider() {
         startX = e.touches[0].clientX;
         currentX = startX;
         isDragging = true;
+        track.style.transition = 'none';
         stopAutoSlide();
     });
     
     track.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        track.style.transform = `translateX(${currentPosition + diff}px)`;
     });
     
     track.addEventListener('touchend', () => {
@@ -430,61 +433,44 @@ function setupReviewsSlider() {
         const threshold = 50;
         
         if (Math.abs(diff) > threshold) {
-            if (diff > 0 && currentPosition > maxPosition) {
-                // Свайп влево - следующий слайд
-                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
-                currentPosition -= itemWidth * itemsToScroll;
-                if (currentPosition < maxPosition) currentPosition = maxPosition;
-            } else if (diff < 0 && currentPosition < 0) {
-                // Свайп вправо - предыдущий слайд
-                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
-                currentPosition += itemWidth * itemsToScroll;
-                if (currentPosition > 0) currentPosition = 0;
+            if (diff > 0) { // Свайп влево
+                if (currentPosition > maxPosition) {
+                    const moveBy = itemsPerView * itemWidth;
+                    currentPosition -= moveBy;
+                    if (currentPosition < maxPosition) currentPosition = maxPosition;
+                }
+            } else { // Свайп вправо
+                if (currentPosition < 0) {
+                    const moveBy = itemsPerView * itemWidth;
+                    currentPosition += moveBy;
+                    if (currentPosition > 0) currentPosition = 0;
+                }
             }
-            updateSliderPosition();
         }
         
-        // Перезапуск автопрокрутки
+        updateSliderPosition();
         setTimeout(startAutoSlide, 3000);
     });
     
     // Адаптация при изменении размера окна
     window.addEventListener('resize', () => {
-        // Пересчитываем maxPosition при изменении размера
-        const newItemWidth = items[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
-        const newMaxPosition = -(items.length - 3) * newItemWidth;
+        // Пересчитываем значения
+        const newTrackWidth = track.offsetWidth;
+        const newItemsPerView = Math.floor(newTrackWidth / itemWidth) || 1;
+        const newMaxPosition = -(items.length - newItemsPerView) * itemWidth;
         
-        // Корректируем текущую позицию
+        // Корректируем позицию
         if (currentPosition < newMaxPosition) {
             currentPosition = newMaxPosition;
         }
         
+        console.log(`🔄 Ресайз. Новые значения: itemsPerView=${newItemsPerView}, maxPosition=${newMaxPosition}`);
         updateSliderPosition();
     });
     
     // Инициализация
     updateSliderPosition();
-    
-    // Добавляем стили для disabled кнопок
-    const style = document.createElement('style');
-    style.textContent = `
-        .slider-prev.disabled,
-        .slider-next.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .slider-prev.disabled:hover,
-        .slider-next.disabled:hover {
-            transform: none;
-            background: var(--silver-gradient);
-        }
-        
-        .review-item img {
-            transition: opacity 0.5s ease;
-        }
-    `;
-    document.head.appendChild(style);
+    console.log('✅ Слайдер отзывов инициализирован');
 }
 
 // Дополнительные обработчики событий

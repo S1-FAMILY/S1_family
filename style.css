@@ -606,6 +606,7 @@ a {
 .hero-image {
     display: flex;
     justify-content: flex-end;
+    align-self: center;
 }
 
 .image-container {
@@ -628,10 +629,56 @@ a {
     height: auto;
     display: block;
     transition: transform 0.5s ease;
+    object-fit: contain;
 }
 
 .image-container:hover .hero-logo {
     transform: scale(1.05);
+}
+
+/* Увеличение главной картинки на десктопе */
+@media (min-width: 1025px) {
+    .hero-image {
+        justify-content: flex-end;
+        align-self: center;
+    }
+    
+    .image-container {
+        max-width: 580px !important; /* Увеличили с 500px до 580px */
+        width: 100%;
+        transform: perspective(1200px) rotateY(-5deg); /* Увеличили перспективу */
+        border-width: 4px;
+    }
+    
+    .hero-logo {
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+        object-fit: contain; /* Меняем на contain чтобы вся картинка была видна */
+    }
+}
+
+/* Еще больше на очень широких экранах */
+@media (min-width: 1400px) {
+    .image-container {
+        max-width: 650px !important;
+    }
+    
+    .hero-logo {
+        min-height: 550px;
+    }
+}
+
+/* На планшетах тоже немного увеличим */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero-image {
+        max-width: 500px;
+        margin: 0 auto var(--spacing-lg);
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
 }
 
 /* ===== SECTIONS ===== */
@@ -1121,7 +1168,8 @@ a {
     display: flex;
     gap: var(--spacing-md);
     padding: var(--spacing-md) 0;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -1132,11 +1180,17 @@ a {
 }
 
 .review-item {
-    flex: 0 0 300px;
+    flex: 0 0 calc(33.333% - var(--spacing-md));
+    min-width: 300px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    cursor: grab;
+}
+
+.review-item:active {
+    cursor: grabbing;
 }
 
 .review-item:hover {
@@ -1149,6 +1203,11 @@ a {
     height: 400px;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+}
+
+.review-item:hover img {
+    transform: scale(1.05);
 }
 
 .slider-controls {
@@ -1181,8 +1240,8 @@ a {
     box-shadow: var(--shadow);
 }
 
-.slider-prev:hover,
-.slider-next:hover {
+.slider-prev:hover:not(.disabled),
+.slider-next:hover:not(.disabled) {
     transform: scale(1.1);
     background: var(--silver-gradient-dark);
 }
@@ -1855,6 +1914,10 @@ a {
     .reviews-slider {
         padding: 0 40px;
     }
+    
+    .review-item {
+        flex: 0 0 calc(50% - var(--spacing-md));
+    }
 }
 
 @media (max-width: 900px) {
@@ -1904,28 +1967,37 @@ a {
         max-width: 300px;
     }
     
+    /* Мобильная версия статистики - 2 в ряд */
     .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
         justify-content: center;
-        gap: var(--spacing-sm); /* Уменьшили отступ */
+        margin-top: var(--spacing-md);
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    /* Уменьшение квадратиков статистики на мобильных */
     .stat-item {
-        min-width: calc(50% - var(--spacing-sm));
-        max-width: calc(50% - var(--spacing-sm));
+        width: 100%;
+        min-width: auto;
+        max-width: none;
         aspect-ratio: 1;
-        padding: 10px 5px; /* Уменьшили отступы */
-        min-width: 80px; /* Еще уменьшили минимальную ширину */
+        padding: 12px 8px;
+        margin: 0;
+        min-height: 100px;
     }
     
     .stat-number {
-        font-size: clamp(1.5rem, 2.5vw, 2rem); /* Уменьшили размер цифр */
-        margin-bottom: 0.25rem;
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+        margin-bottom: 0.3rem;
     }
     
     .stat-label {
-        font-size: 0.75rem; /* Уменьшили размер текста */
+        font-size: 0.8rem;
         letter-spacing: 0.5px;
+        line-height: 1.2;
     }
     
     .directions-grid {
@@ -1949,7 +2021,7 @@ a {
     }
     
     .review-item {
-        flex: 0 0 250px;
+        flex: 0 0 calc(100% - var(--spacing-md));
     }
     
     .slider-controls {
@@ -2002,27 +2074,23 @@ a {
         font-size: 1.8rem;
     }
     
-    .stat-item {
-        min-width: calc(50% - 5px);
-        max-width: calc(50% - 5px);
-        margin-bottom: 10px;
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 280px;
     }
     
-    /* Еще больше уменьшаем квадратики на очень маленьких экранах */
-    @media (max-width: 400px) {
-        .stat-item {
-            min-width: calc(50% - 5px);
-            max-width: calc(50% - 5px);
-            padding: 8px 4px;
-        }
-        
-        .stat-number {
-            font-size: 1.3rem;
-        }
-        
-        .stat-label {
-            font-size: 0.65rem;
-        }
+    .stat-item {
+        padding: 10px 6px;
+        min-height: 90px;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .team-grid {
@@ -2038,7 +2106,7 @@ a {
     }
     
     .review-item {
-        flex: 0 0 280px;
+        flex: 0 0 calc(100% - 10px);
     }
     
     .footer-grid {
@@ -2097,5 +2165,47 @@ a {
     
     .awards-label {
         font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 260px;
+    }
+    
+    .stat-item {
+        padding: 8px 5px;
+        min-height: 85px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+}
+
+/* Стили для disabled кнопок слайдера */
+.slider-prev.disabled,
+.slider-next.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.slider-prev.disabled:hover,
+.slider-next.disabled:hover {
+    background: var(--silver-gradient) !important;
+    transform: none !important;
+}
+
+/* Для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .review-item {
+        flex: 0 0 calc(50% - var(--spacing-md));
     }
 }
