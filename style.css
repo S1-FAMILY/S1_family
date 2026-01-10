@@ -202,7 +202,7 @@ a {
 .hero-title .logo-s1-large {
     font-family: var(--font-secondary);
     font-weight: 800;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(2.8rem, 6vw, 5.5rem); /* Увеличено с 4.5rem до 5.5rem */
     background: var(--silver-gradient);
     -webkit-background-clip: text;
     background-clip: text;
@@ -213,7 +213,7 @@ a {
 .hero-title .logo-family-large {
     font-family: var(--font-secondary);
     font-weight: 700;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(2.8rem, 6vw, 5.5rem); /* Увеличено с 4.5rem до 5.5rem */
     color: var(--white);
     text-transform: lowercase;
     letter-spacing: 2px;
@@ -502,7 +502,7 @@ a {
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
                 url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    padding-top: 130px; /* Увеличенный отступ сверху */
+    padding-top: 120px; /* Увеличенный отступ сверху */
     overflow: hidden;
 }
 
@@ -521,13 +521,15 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
-    align-items: center;
+    align-items: flex-start;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    min-height: 600px;
 }
 
 .hero-content {
     padding-right: var(--spacing-lg);
+    align-self: center;
 }
 
 .hero-subtitle {
@@ -1866,7 +1868,7 @@ a {
     
     .hero-title .logo-s1-large,
     .hero-title .logo-family-large {
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-size: clamp(2rem, 4vw, 3rem); /* На мобильных оставляем прежний размер */
     }
     
     .directions-grid {
@@ -1904,12 +1906,26 @@ a {
     
     .hero-stats {
         justify-content: center;
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm); /* Уменьшили отступ */
     }
     
+    /* Уменьшение квадратиков статистики на мобильных */
     .stat-item {
-        min-width: calc(50% - var(--spacing-md));
-        flex: 0 0 calc(50% - var(--spacing-md));
+        min-width: calc(50% - var(--spacing-sm));
+        max-width: calc(50% - var(--spacing-sm));
+        aspect-ratio: 1;
+        padding: 10px 5px; /* Уменьшили отступы */
+        min-width: 80px; /* Еще уменьшили минимальную ширину */
+    }
+    
+    .stat-number {
+        font-size: clamp(1.5rem, 2.5vw, 2rem); /* Уменьшили размер цифр */
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem; /* Уменьшили размер текста */
+        letter-spacing: 0.5px;
     }
     
     .directions-grid {
@@ -1987,8 +2003,26 @@ a {
     }
     
     .stat-item {
-        min-width: 100%;
-        flex: 0 0 100%;
+        min-width: calc(50% - 5px);
+        max-width: calc(50% - 5px);
+        margin-bottom: 10px;
+    }
+    
+    /* Еще больше уменьшаем квадратики на очень маленьких экранах */
+    @media (max-width: 400px) {
+        .stat-item {
+            min-width: calc(50% - 5px);
+            max-width: calc(50% - 5px);
+            padding: 8px 4px;
+        }
+        
+        .stat-number {
+            font-size: 1.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+        }
     }
     
     .team-grid {
@@ -2034,6 +2068,21 @@ a {
     .yandex-form-wrapper {
         height: 550px;
         margin: var(--spacing-md) 0;
+    }
+    
+    /* Увеличиваем ширину Яндекс формы на мобильных */
+    .yandex-form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 0;
+    }
+    
+    .yandex-form-wrapper iframe {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
     }
     
     .awards-badge {

@@ -297,7 +297,7 @@ function setupScrollToTop(scrollToTopBtn) {
     });
 }
 
-// Слайдер отзывов
+// Слайдер отзывов (улучшенная версия)
 function setupReviewsSlider() {
     const track = document.getElementById('reviewsTrack');
     const prevBtn = document.getElementById('reviewsPrev');
@@ -306,7 +306,27 @@ function setupReviewsSlider() {
     if (!track || !prevBtn || !nextBtn) return;
     
     const items = document.querySelectorAll('.review-item');
-    const itemWidth = items[0]?.offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
+    if (items.length === 0) return;
+    
+    // Инициализация изображений для ленивой загрузки
+    const reviewImages = document.querySelectorAll('.review-item img');
+    reviewImages.forEach(img => {
+        if (img.src.includes('placeholder.com')) {
+            // Добавляем небольшую задержку для имитации загрузки
+            setTimeout(() => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    img.src = img.src.replace('placeholder.com', 'picsum.photos');
+                    img.onload = () => {
+                        img.style.opacity = '1';
+                    };
+                }, 100);
+            }, Math.random() * 1000);
+        }
+    });
+    
+    const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
     let currentPosition = 0;
     const maxPosition = -(items.length - 3) * itemWidth;
     
@@ -317,12 +337,26 @@ function setupReviewsSlider() {
         // Блокируем кнопки на границах
         prevBtn.disabled = currentPosition >= 0;
         nextBtn.disabled = currentPosition <= maxPosition;
+        
+        // Добавляем/убираем класс disabled для стилизации
+        if (currentPosition >= 0) {
+            prevBtn.classList.add('disabled');
+        } else {
+            prevBtn.classList.remove('disabled');
+        }
+        
+        if (currentPosition <= maxPosition) {
+            nextBtn.classList.add('disabled');
+        } else {
+            nextBtn.classList.remove('disabled');
+        }
     };
     
     // Следующий слайд
     nextBtn.addEventListener('click', () => {
         if (currentPosition > maxPosition) {
-            currentPosition -= itemWidth * 3; // Прокрутка по 3 элемента
+            const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
+            currentPosition -= itemWidth * itemsToScroll;
             if (currentPosition < maxPosition) currentPosition = maxPosition;
             updateSliderPosition();
         }
@@ -331,7 +365,8 @@ function setupReviewsSlider() {
     // Предыдущий слайд
     prevBtn.addEventListener('click', () => {
         if (currentPosition < 0) {
-            currentPosition += itemWidth * 3; // Прокрутка по 3 элемента
+            const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
+            currentPosition += itemWidth * itemsToScroll;
             if (currentPosition > 0) currentPosition = 0;
             updateSliderPosition();
         }
@@ -345,7 +380,8 @@ function setupReviewsSlider() {
             if (currentPosition <= maxPosition) {
                 currentPosition = 0; // Возврат к началу
             } else {
-                currentPosition -= itemWidth * 3;
+                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
+                currentPosition -= itemWidth * itemsToScroll;
                 if (currentPosition < maxPosition) currentPosition = maxPosition;
             }
             updateSliderPosition();
@@ -369,8 +405,86 @@ function setupReviewsSlider() {
     prevBtn.addEventListener('blur', startAutoSlide);
     nextBtn.addEventListener('blur', startAutoSlide);
     
+    // Обработка свайпа на мобильных
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+        stopAutoSlide();
+    });
+    
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+    });
+    
+    track.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = startX - currentX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0 && currentPosition > maxPosition) {
+                // Свайп влево - следующий слайд
+                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
+                currentPosition -= itemWidth * itemsToScroll;
+                if (currentPosition < maxPosition) currentPosition = maxPosition;
+            } else if (diff < 0 && currentPosition < 0) {
+                // Свайп вправо - предыдущий слайд
+                const itemsToScroll = window.innerWidth < 768 ? 1 : 3;
+                currentPosition += itemWidth * itemsToScroll;
+                if (currentPosition > 0) currentPosition = 0;
+            }
+            updateSliderPosition();
+        }
+        
+        // Перезапуск автопрокрутки
+        setTimeout(startAutoSlide, 3000);
+    });
+    
+    // Адаптация при изменении размера окна
+    window.addEventListener('resize', () => {
+        // Пересчитываем maxPosition при изменении размера
+        const newItemWidth = items[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 320;
+        const newMaxPosition = -(items.length - 3) * newItemWidth;
+        
+        // Корректируем текущую позицию
+        if (currentPosition < newMaxPosition) {
+            currentPosition = newMaxPosition;
+        }
+        
+        updateSliderPosition();
+    });
+    
     // Инициализация
     updateSliderPosition();
+    
+    // Добавляем стили для disabled кнопок
+    const style = document.createElement('style');
+    style.textContent = `
+        .slider-prev.disabled,
+        .slider-next.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .slider-prev.disabled:hover,
+        .slider-next.disabled:hover {
+            transform: none;
+            background: var(--silver-gradient);
+        }
+        
+        .review-item img {
+            transition: opacity 0.5s ease;
+        }
+    `;
+    document.head.appendChild(style);
 }
 
 // Дополнительные обработчики событий
