@@ -19,7 +19,11 @@ function initializeApp() {
         setupLazyLoading();
         setupYearUpdate(elements.yearElements);
         setupScrollToTop(elements.scrollToTop);
-        setupReviewsSlider(); // Исправленный слайдер отзывов
+        
+        // Слайдер отзывов инициализируем после полной загрузки DOM
+        setTimeout(() => {
+            setupReviewsSlider();
+        }, 100);
         
         // Добавляем обработчики событий
         addEventListeners(elements);
@@ -297,94 +301,117 @@ function setupScrollToTop(scrollToTopBtn) {
     });
 }
 
-// Слайдер отзывов (исправленная версия)
+// Слайдер отзывов (полностью переписанный)
 function setupReviewsSlider() {
+    console.log('🔄 Инициализация слайдера отзывов...');
+    
     const track = document.getElementById('reviewsTrack');
     const prevBtn = document.getElementById('reviewsPrev');
     const nextBtn = document.getElementById('reviewsNext');
     
     if (!track || !prevBtn || !nextBtn) {
-        console.log('❌ Элементы слайдера не найдены');
+        console.error('❌ Элементы слайдера не найдены');
         return;
     }
     
-    const items = document.querySelectorAll('.review-item');
+    const items = track.querySelectorAll('.review-item');
     if (items.length === 0) {
-        console.log('❌ Элементы отзывов не найдены');
+        console.error('❌ Нет элементов для слайдера');
         return;
     }
     
     console.log(`✅ Найдено ${items.length} отзывов`);
     
-    // Рассчитываем ширину элемента с учетом gap
-    const trackStyles = getComputedStyle(track);
-    const gap = parseInt(trackStyles.gap) || 20;
-    const itemWidth = items[0].offsetWidth + gap;
-    console.log(`✅ Ширина элемента: ${itemWidth}px`);
+    let currentSlide = 0;
+    let autoSlideInterval;
+    let isAnimating = false;
     
-    let currentPosition = 0;
-    const trackWidth = track.offsetWidth;
-    const itemsPerView = Math.floor(trackWidth / itemWidth) || 1;
-    const maxPosition = -(items.length - itemsPerView) * itemWidth;
-    
-    console.log(`✅ Элементов на экране: ${itemsPerView}, Макс. позиция: ${maxPosition}px`);
-    
-    // Функция для обновления позиции
-    const updateSliderPosition = () => {
-        track.style.transform = `translateX(${currentPosition}px)`;
-        track.style.transition = 'transform 0.5s ease';
-        
-        // Обновляем состояние кнопок
-        const isAtStart = currentPosition >= 0;
-        const isAtEnd = currentPosition <= maxPosition;
-        
-        prevBtn.disabled = isAtStart;
-        nextBtn.disabled = isAtEnd;
-        
-        // Обновляем классы для стилизации
-        prevBtn.classList.toggle('disabled', isAtStart);
-        nextBtn.classList.toggle('disabled', isAtEnd);
+    // Рассчитываем количество видимых слайдов в зависимости от ширины экрана
+    const getVisibleSlides = () => {
+        const width = window.innerWidth;
+        if (width < 768) return 1; // Мобильные
+        if (width < 1024) return 2; // Планшеты
+        return 3; // Десктоп
     };
     
-    // Кнопка "Далее"
-    nextBtn.addEventListener('click', () => {
-        if (currentPosition > maxPosition) {
-            const moveBy = itemsPerView * itemWidth;
-            currentPosition -= moveBy;
-            if (currentPosition < maxPosition) currentPosition = maxPosition;
-            console.log(`➡️ Следующий слайд. Позиция: ${currentPosition}px`);
-            updateSliderPosition();
-        }
-    });
+    // Рассчитываем максимальный слайд
+    const getMaxSlide = () => {
+        const visibleSlides = getVisibleSlides();
+        return Math.max(0, items.length - visibleSlides);
+    };
     
-    // Кнопка "Назад"
-    prevBtn.addEventListener('click', () => {
-        if (currentPosition < 0) {
-            const moveBy = itemsPerView * itemWidth;
-            currentPosition += moveBy;
-            if (currentPosition > 0) currentPosition = 0;
-            console.log(`⬅️ Предыдущий слайд. Позиция: ${currentPosition}px`);
+    // Обновление позиции слайдера
+    const updateSliderPosition = (instant = false) => {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        
+        // Рассчитываем смещение
+        const itemWidth = items[0].offsetWidth;
+        const gap = 20; // Примерный gap между элементами
+        const visibleSlides = getVisibleSlides();
+        const maxSlide = getMaxSlide();
+        
+        // Ограничиваем currentSlide
+        currentSlide = Math.max(0, Math.min(currentSlide, maxSlide));
+        
+        // Рассчитываем смещение
+        const offset = currentSlide * (itemWidth + gap) * -1;
+        
+        // Применяем анимацию
+        track.style.transition = instant ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        track.style.transform = `translateX(${offset}px)`;
+        
+        // Обновляем состояние кнопок
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= maxSlide;
+        prevBtn.classList.toggle('disabled', currentSlide === 0);
+        nextBtn.classList.toggle('disabled', currentSlide >= maxSlide);
+        
+        // Завершаем анимацию
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+        
+        console.log(`📊 Слайд: ${currentSlide}/${maxSlide}, Смещение: ${offset}px`);
+    };
+    
+    // Перейти к следующему слайду
+    const nextSlide = () => {
+        if (isAnimating) return;
+        
+        const maxSlide = getMaxSlide();
+        if (currentSlide < maxSlide) {
+            currentSlide++;
+            updateSliderPosition();
+        } else {
+            // Если достигли конца, возвращаемся к началу
+            currentSlide = 0;
             updateSliderPosition();
         }
-    });
+    };
+    
+    // Перейти к предыдущему слайду
+    const prevSlide = () => {
+        if (isAnimating) return;
+        
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSliderPosition();
+        } else {
+            // Если в начале, переходим к концу
+            const maxSlide = getMaxSlide();
+            currentSlide = maxSlide;
+            updateSliderPosition();
+        }
+    };
     
     // Автопрокрутка
-    let autoSlideInterval;
-    
     const startAutoSlide = () => {
-        stopAutoSlide(); // Останавливаем предыдущий интервал если есть
+        stopAutoSlide();
         autoSlideInterval = setInterval(() => {
-            if (currentPosition <= maxPosition) {
-                // Возврат к началу с анимацией
-                currentPosition = 0;
-            } else {
-                const moveBy = itemsPerView * itemWidth;
-                currentPosition -= moveBy;
-                if (currentPosition < maxPosition) currentPosition = maxPosition;
-            }
-            console.log(`🔄 Автопрокрутка. Позиция: ${currentPosition}px`);
-            updateSliderPosition();
-        }, 5000); // 5 секунд
+            nextSlide();
+        }, 4000);
     };
     
     const stopAutoSlide = () => {
@@ -394,83 +421,69 @@ function setupReviewsSlider() {
         }
     };
     
-    // Запускаем автопрокрутку
-    startAutoSlide();
+    // Обработчики событий для кнопок
+    nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        nextSlide();
+        setTimeout(startAutoSlide, 5000);
+    });
     
-    // Останавливаем при взаимодействии
-    track.addEventListener('mouseenter', stopAutoSlide);
-    track.addEventListener('mouseleave', startAutoSlide);
-    prevBtn.addEventListener('mouseenter', stopAutoSlide);
-    nextBtn.addEventListener('mouseenter', stopAutoSlide);
-    prevBtn.addEventListener('mouseleave', startAutoSlide);
-    nextBtn.addEventListener('mouseleave', startAutoSlide);
+    prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        setTimeout(startAutoSlide, 5000);
+    });
     
     // Обработка свайпа на мобильных
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50;
     
     track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        currentX = startX;
-        isDragging = true;
-        track.style.transition = 'none';
+        touchStartX = e.changedTouches[0].screenX;
         stopAutoSlide();
     });
     
-    track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-        const diff = currentX - startX;
-        track.style.transform = `translateX(${currentPosition + diff}px)`;
-    });
-    
-    track.addEventListener('touchend', () => {
-        if (!isDragging) return;
-        isDragging = false;
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
         
-        const diff = startX - currentX;
-        const threshold = 50;
-        
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) { // Свайп влево
-                if (currentPosition > maxPosition) {
-                    const moveBy = itemsPerView * itemWidth;
-                    currentPosition -= moveBy;
-                    if (currentPosition < maxPosition) currentPosition = maxPosition;
-                }
-            } else { // Свайп вправо
-                if (currentPosition < 0) {
-                    const moveBy = itemsPerView * itemWidth;
-                    currentPosition += moveBy;
-                    if (currentPosition > 0) currentPosition = 0;
-                }
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Свайп влево - следующий слайд
+                nextSlide();
+            } else {
+                // Свайп вправо - предыдущий слайд
+                prevSlide();
             }
         }
         
-        updateSliderPosition();
         setTimeout(startAutoSlide, 3000);
     });
     
-    // Адаптация при изменении размера окна
+    // Остановка автопрокрутки при наведении
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
+    
+    // Обработка ресайза окна
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        // Пересчитываем значения
-        const newTrackWidth = track.offsetWidth;
-        const newItemsPerView = Math.floor(newTrackWidth / itemWidth) || 1;
-        const newMaxPosition = -(items.length - newItemsPerView) * itemWidth;
-        
-        // Корректируем позицию
-        if (currentPosition < newMaxPosition) {
-            currentPosition = newMaxPosition;
-        }
-        
-        console.log(`🔄 Ресайз. Новые значения: itemsPerView=${newItemsPerView}, maxPosition=${newMaxPosition}`);
-        updateSliderPosition();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Пересчитываем позицию при изменении размера окна
+            const maxSlide = getMaxSlide();
+            if (currentSlide > maxSlide) {
+                currentSlide = maxSlide;
+            }
+            updateSliderPosition(true); // Без анимации
+        }, 250);
     });
     
     // Инициализация
-    updateSliderPosition();
-    console.log('✅ Слайдер отзывов инициализирован');
+    updateSliderPosition(true);
+    startAutoSlide();
+    
+    console.log('✅ Слайдер отзывов успешно инициализирован');
 }
 
 // Дополнительные обработчики событий
@@ -502,27 +515,6 @@ function addEventListeners(elements) {
     });
 }
 
-// Вспомогательные функции
-function getAgeGroupName(ageKey) {
-    const ageGroups = {
-        'breakdance-kids': 'Break Dance Kids (5-7 лет)',
-        'breakdance-7-15': 'Break Dance (7-15 лет)',
-        'breakdance-pro': 'Break Dance Pro (15+ лет)',
-        'hiphop-kids': 'Hip-Hop Kids (5-7 лет)',
-        'hiphop-junior': 'Hip-Hop Junior (7-11 лет)',
-        'hiphop-12-15': 'Hip-Hop (12-15 лет)',
-        'hiphop-pro': 'Hip-Hop Pro (16+ лет)',
-        'afro-7+': 'Afro (7+ лет)',
-        'freestyle-7+': 'Freestyle (7+ лет)',
-        'popping-7+': 'Popping (7+ лет)',
-        'vogue-12+': 'Vogue (12+ лет)',
-        'dancehall-10+': 'Dancehall (10+ лет)',
-        'individual': 'Индивидуальные занятия (любой возраст)'
-    };
-    
-    return ageGroups[ageKey] || ageKey;
-}
-
 // ===== ЗАПУСК ПРИЛОЖЕНИЯ =====
 // Проверяем что DOM загружен
 if (document.readyState === 'loading') {
@@ -532,11 +524,257 @@ if (document.readyState === 'loading') {
     initializeApp();
 }
 
-// Экспорт функций если нужно (для тестов)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        initializeApp,
-        getAgeGroupName,
-        getAllElements
+
+
+
+// ===== СЛАЙДЕР ОТЗЫВОВ (Стрелки вместо автопереключения) =====
+function setupReviewsSlider() {
+    console.log('🔄 Инициализация слайдера с ручным управлением...');
+    
+    const prevBtn = document.querySelector('.review-prev');
+    const nextBtn = document.querySelector('.review-next');
+    const groups = document.querySelectorAll('.review-group');
+    const currentGroupSpan = document.querySelector('.current-group');
+    const totalGroupsSpan = document.querySelector('.total-groups');
+    
+    if (!prevBtn || !nextBtn || groups.length === 0) {
+        console.log('ℹ️ Элементы слайдера не найдены');
+        return;
+    }
+    
+    console.log(`✅ Найдено ${groups.length} групп отзывов`);
+    
+    let currentGroup = 0;
+    let isAnimating = false;
+    const animationDuration = 500; // 0.5 секунды
+    
+    // Устанавливаем общее количество групп
+    if (totalGroupsSpan) {
+        totalGroupsSpan.textContent = groups.length;
+    }
+    
+    // Обновление состояния кнопок и индикатора
+    const updateControls = () => {
+        // Обновляем индикатор
+        if (currentGroupSpan) {
+            currentGroupSpan.textContent = currentGroup + 1;
+        }
+        
+        // Обновляем состояние кнопок
+        prevBtn.disabled = currentGroup === 0;
+        nextBtn.disabled = currentGroup === groups.length - 1;
+        
+        // Добавляем/убираем классы для стилизации
+        prevBtn.classList.toggle('disabled', currentGroup === 0);
+        nextBtn.classList.toggle('disabled', currentGroup === groups.length - 1);
+        
+        // Обновляем ARIA-атрибуты
+        groups.forEach((group, index) => {
+            group.setAttribute('aria-hidden', index !== currentGroup ? 'true' : 'false');
+            group.setAttribute('aria-live', index === currentGroup ? 'polite' : 'off');
+        });
+        
+        console.log(`📊 Текущая группа: ${currentGroup + 1} из ${groups.length}`);
     };
+    
+    // Функция перехода к следующей группе
+    const nextGroup = () => {
+        if (isAnimating || currentGroup >= groups.length - 1) return;
+        
+        isAnimating = true;
+        const currentActive = groups[currentGroup];
+        const nextIndex = currentGroup + 1;
+        const nextGroupEl = groups[nextIndex];
+        
+        // Устанавливаем классы для анимации
+        currentActive.classList.remove('active');
+        currentActive.classList.add('prev');
+        
+        nextGroupEl.classList.remove('next');
+        nextGroupEl.classList.add('active');
+        
+        // Обновляем текущую группу
+        currentGroup = nextIndex;
+        
+        // Сбрасываем анимацию через время
+        setTimeout(() => {
+            currentActive.classList.remove('prev');
+            nextGroupEl.classList.remove('next');
+            isAnimating = false;
+            updateControls();
+        }, animationDuration);
+    };
+    
+    // Функция перехода к предыдущей группе
+    const prevGroup = () => {
+        if (isAnimating || currentGroup <= 0) return;
+        
+        isAnimating = true;
+        const currentActive = groups[currentGroup];
+        const prevIndex = currentGroup - 1;
+        const prevGroupEl = groups[prevIndex];
+        
+        // Устанавливаем классы для анимации
+        currentActive.classList.remove('active');
+        currentActive.classList.add('next');
+        
+        prevGroupEl.classList.remove('prev');
+        prevGroupEl.classList.add('active');
+        
+        // Обновляем текущую группу
+        currentGroup = prevIndex;
+        
+        // Сбрасываем анимацию через время
+        setTimeout(() => {
+            currentActive.classList.remove('next');
+            prevGroupEl.classList.remove('prev');
+            isAnimating = false;
+            updateControls();
+        }, animationDuration);
+    };
+    
+    // Функция перехода к конкретной группе
+    const goToGroup = (index) => {
+        if (isAnimating || index < 0 || index >= groups.length || index === currentGroup) return;
+        
+        isAnimating = true;
+        const currentActive = groups[currentGroup];
+        const targetGroup = groups[index];
+        
+        // Определяем направление анимации
+        const direction = index > currentGroup ? 'next' : 'prev';
+        
+        // Устанавливаем классы для анимации
+        currentActive.classList.remove('active');
+        currentActive.classList.add(direction === 'next' ? 'prev' : 'next');
+        
+        targetGroup.classList.remove(direction === 'next' ? 'next' : 'prev');
+        targetGroup.classList.add('active');
+        
+        // Обновляем текущую группу
+        currentGroup = index;
+        
+        // Сбрасываем анимацию через время
+        setTimeout(() => {
+            currentActive.classList.remove('prev', 'next');
+            targetGroup.classList.remove('prev', 'next');
+            isAnimating = false;
+            updateControls();
+        }, animationDuration);
+    };
+    
+    // Назначаем обработчики на кнопки
+    prevBtn.addEventListener('click', prevGroup);
+    nextBtn.addEventListener('click', nextGroup);
+    
+    // Добавляем навигацию с клавиатуры
+    const handleKeyDown = (e) => {
+        // Стрелки влево/вправо
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevGroup();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextGroup();
+        }
+        
+        // Цифры для быстрого перехода к группе
+        if (e.key >= '1' && e.key <= '5') {
+            const groupIndex = parseInt(e.key) - 1;
+            if (groupIndex < groups.length) {
+                e.preventDefault();
+                goToGroup(groupIndex);
+            }
+        }
+    };
+    
+    // Добавляем свайп для мобильных устройств
+    const setupTouchSwiping = () => {
+        const container = document.querySelector('.reviews-container');
+        if (!container) return;
+        
+        let startX = 0;
+        let endX = 0;
+        const minSwipeDistance = 50;
+        
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        container.addEventListener('touchmove', (e) => {
+            // Предотвращаем скролл страницы при горизонтальном свайпе
+            if (Math.abs(e.touches[0].clientX - startX) > Math.abs(e.touches[0].clientY - startX)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        container.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > minSwipeDistance) {
+                if (diff > 0) {
+                    // Свайп влево - следующая группа
+                    nextGroup();
+                } else {
+                    // Свайп вправо - предыдущая группа
+                    prevGroup();
+                }
+            }
+        }, { passive: true });
+    };
+    
+    // Инициализация
+    const initSlider = () => {
+        // Устанавливаем начальные классы
+        groups.forEach((group, index) => {
+            group.style.transition = `opacity ${animationDuration}ms ease, transform ${animationDuration}ms ease`;
+            if (index === 0) {
+                group.classList.add('active');
+            } else {
+                group.classList.remove('active');
+            }
+        });
+        
+        // Добавляем обработчики событий
+        document.addEventListener('keydown', handleKeyDown);
+        
+        // Настраиваем свайп для мобильных
+        setupTouchSwiping();
+        
+        // Инициализируем контролы
+        updateControls();
+        
+        console.log(`✅ Слайдер с ручным управлением инициализирован: ${groups.length} групп`);
+        
+        // Возвращаем публичные методы для отладки
+        return {
+            nextGroup,
+            prevGroup,
+            goToGroup,
+            currentGroup: () => currentGroup + 1,
+            totalGroups: groups.length
+        };
+    };
+    
+    // Запускаем инициализацию
+    const slider = initSlider();
+    
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', () => {
+        // Корректируем размер стрелок на маленьких экранах
+        if (window.innerWidth < 576) {
+            prevBtn.style.width = '36px';
+            prevBtn.style.height = '36px';
+            nextBtn.style.width = '36px';
+            nextBtn.style.height = '36px';
+        } else {
+            prevBtn.style.width = '';
+            prevBtn.style.height = '';
+            nextBtn.style.width = '';
+            nextBtn.style.height = '';
+        }
+    });
+    
+    return slider;
 }
