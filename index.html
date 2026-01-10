@@ -103,57 +103,57 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+<!-- Hero Section -->
 <section class="hero" id="home">
     <div class="container hero-container">
         <div class="hero-content">
-            <h1 class="hero-title">
-                <div class="title-line">
+            <div class="hero-title-wrapper">
+                <h1 class="hero-title">
                     <span class="logo-s1-large">S1</span>
                     <span class="logo-family-large">family</span>
-                </div>
-                <span class="title-line subtitle">ЦЕНТР ТАНЦЕВАЛЬНОГО ИСКУССТВА</span>
-            </h1>
-                <p class="hero-subtitle">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-calendar-check"></i> Записаться на пробное
-                    </a>
-                    <a href="#directions" class="btn btn-outline">
-                        <i class="fas fa-directions"></i> Направления
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="13">0</span>
-                        <span class="stat-label">лет опыта</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="8">0</span>
-                        <span class="stat-label">тренеров</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="500">0</span>
-                        <span class="stat-label">учеников</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="100">0</span>
-                        <span class="stat-label">наград</span>
-                    </div>
-                </div>
+                </h1>
+                <span class="hero-subtitle-main">ЦЕНТР ТАНЦЕВАЛЬНОГО ИСКУССТВА</span>
             </div>
             
-            <div class="hero-image">
-                <div class="image-container">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Танцевальный коллектив S1 family на выступлении" 
-                         class="hero-logo" 
-                         loading="lazy">
+            <p class="hero-description">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
+            
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Записаться на пробное
+                </a>
+                <a href="#directions" class="btn btn-outline">
+                    <i class="fas fa-directions"></i> Направления
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="13">0</span>
+                    <span class="stat-label">лет опыта</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">тренеров</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">учеников</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="100">0</span>
+                    <span class="stat-label">наград</span>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="hero-image-wrapper">
+            <img src="главная-лого-сейчас_стоит.png" 
+                 alt="Танцевальный коллектив S1 family" 
+                 class="hero-logo-image"
+                 loading="lazy">
+        </div>
+    </div>
+</section>
 
     <!-- About Section -->
     <section class="section about" id="about">
@@ -579,110 +579,185 @@
         </div>
     </section>
 
-    <!-- Reviews Section (15 картинок отзывов) -->
-    <section class="section reviews white-section" id="reviews">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ОТЗЫВЫ НАШИХ УЧЕНИКОВ</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Более 500 довольных учеников и их родителей</p>
-            </div>
+<!-- Reviews Section -->
+<section class="section reviews white-section" id="reviews">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">ОТЗЫВЫ</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Что говорят наши ученики и их родители</p>
+        </div>
+        
+        <div class="reviews-wrapper">
+            <!-- Кнопка "Назад" -->
+            <button class="review-arrow review-prev" aria-label="Предыдущие отзывы">
+                <i class="fas fa-chevron-left"></i>
+            </button>
             
-            <div class="reviews-slider">
-                <div class="reviews-track" id="reviewsTrack">
-                    <!-- 15 отзывов (картинок) -->
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 1" 
-                             loading="lazy">
+            <div class="reviews-container">
+                <!-- Группа отзывов 1 -->
+                <div class="review-group active">
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Занимаемся всей семьей уже второй год. Ребенок раскрылся, стал увереннее в себе, а я наконец-то нашла хобби, которое заряжает энергией!»</p>
+                        <div class="review-author">
+                            <strong>Мария Иванова</strong>
+                            <span>мама ученицы (8 лет)</span>
+                        </div>
                     </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 2" 
-                             loading="lazy">
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Перепробовал несколько школ, но только в S1 family нашел по-настоящему профессиональных тренеров и дружескую атмосферу. За год подготовки вышли на уровень чемпионата!»</p>
+                        <div class="review-author">
+                            <strong>Дмитрий Соколов</strong>
+                            <span>ученик (24 года)</span>
+                        </div>
                     </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 3" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 4" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 5" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 6" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 7" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 8" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 9" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 10" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 11" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 12" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 13" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 14" 
-                             loading="lazy">
-                    </div>
-                    <div class="review-item">
-                        <img src="главная-лого-сейчас_стоит.png" 
-                             alt="Отзыв ученика 15" 
-                             loading="lazy">
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Очень нравится подход к детям. Дочка бежит на занятия с радостью, а на выступлениях виден настоящий прогресс от занятия к занятию. Спасибо тренерам!»</p>
+                        <div class="review-author">
+                            <strong>Ольга Петрова</strong>
+                            <span>мама Софии (7 лет)</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="slider-controls">
-                    <button class="slider-prev" id="reviewsPrev" aria-label="Предыдущий отзыв">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-next" id="reviewsNext" aria-label="Следующий отзыв">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                <!-- Группа отзывов 2 -->
+                <div class="review-group">
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Пришел с нулевой подготовкой, боялся даже простых движений. За 6 месяцев научился не только базе, но и участвовал в своем первом баттле! Атмосфера в коллективе невероятная.»</p>
+                        <div class="review-author">
+                            <strong>Алексей Козлов</strong>
+                            <span>ученик (19 лет)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Профессионализм тренеров виден сразу. Индивидуальный подход к каждому ученику, четкая методика и видимый результат. Рекомендую всем, кто хочет научиться танцевать серьезно.»</p>
+                        <div class="review-author">
+                            <strong>Анна Сидорова</strong>
+                            <span>танцует 1.5 года</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«S1 family — это больше чем школа танцев. Это место, где ты находишь друзей, учишься преодолевать себя и каждый раз открываешь что-то новое. Лучшее решение — прийти сюда!»</p>
+                        <div class="review-author">
+                            <strong>Игорь и Катя</strong>
+                            <span>семейная пара</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Группа отзывов 3 -->
+                <div class="review-group">
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Мой сын занимается break dance уже 3 года. За это время он не только освоил сложные элементы, но и стал более дисциплинированным и ответственным. Спасибо тренерам!»</p>
+                        <div class="review-author">
+                            <strong>Сергей Николаев</strong>
+                            <span>папа Максима (12 лет)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Как руководитель детской студии, я ценю профессионализм. В S1 family идеальный баланс между дисциплиной и творческой свободой. Дети растут как личности!»</p>
+                        <div class="review-author">
+                            <strong>Елена Воробьева</strong>
+                            <span>педагог</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«После переезда в Ставрополь искала хорошую школу танцев. S1 family превзошел все ожидания! Отличные залы, профессиональные тренеры и потрясающая атмосфера.»</p>
+                        <div class="review-author">
+                            <strong>Виктория Морозова</strong>
+                            <span>студентка</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Группа отзывов 4 -->
+                <div class="review-group">
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Начал заниматься в 30 лет, думал, что уже поздно. Оказалось, возраст не помеха! За год освоил хип-хоп, сейчас готовлюсь к первому выступлению.»</p>
+                        <div class="review-author">
+                            <strong>Андрей Кузнецов</strong>
+                            <span>ученик (30 лет)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Две дочки занимаются в разных группах. Старшая уже 4 года, младшая - 1 год. Вижу огромный прогресс у обеих! Тренеры находят подход к каждому ребенку.»</p>
+                        <div class="review-author">
+                            <strong>Наталья Семенова</strong>
+                            <span>мама двух дочерей</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Привел сына на break dance, чтобы направил энергию в нужное русло. Результат превзошел ожидания: теперь он чемпион города и уверенный в себе подросток.»</p>
+                        <div class="review-author">
+                            <strong>Павел Громов</strong>
+                            <span>отец ученика</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Группа отзывов 5 -->
+                <div class="review-group">
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«За 2 года занятий из застенчивой девочки превратилась в уверенную танцовщицу. Участвовала в 5 конкурсах, 3 из них выиграла! Спасибо тренеру Александру!»</p>
+                        <div class="review-author">
+                            <strong>Ксения Павлова</strong>
+                            <span>ученица (16 лет)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Искали школу с профессиональным подходом к break dance для сына. В S1 family нашли все: и сильных тренеров, и современное оборудование, и дружный коллектив.»</p>
+                        <div class="review-author">
+                            <strong>Ирина Федорова</strong>
+                            <span>мама (сын 14 лет)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-quote">
+                        <div class="quote-icon">❝</div>
+                        <p>«Занимаюсь полгода, пришел без какой-либо подготовки. Уже могу станцевать полноценный танец, участвую в джемах. Атмосфера в коллективе - лучшая!»</p>
+                        <div class="review-author">
+                            <strong>Артем Белов</strong>
+                            <span>ученик (22 года)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="reviews-note">
-                <p><i class="fas fa-info-circle"></i> Все отзывы реальные, собраны с согласия наших учеников и их родителей</p>
-            </div>
+            <!-- Кнопка "Вперед" -->
+            <button class="review-arrow review-next" aria-label="Следующие отзывы">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
-    </section>
+        
+        <!-- Индикатор текущей группы -->
+        <div class="review-counter">
+            <span class="current-group">1</span> / <span class="total-groups">5</span>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section class="section contact white-section" id="contact">
@@ -779,13 +854,15 @@
                                 style="border-radius: 12px;">
                         </iframe>
                     </div>
-                    
-                    <div class="form-note">
-                        <p><i class="fas fa-info-circle"></i> <span class="red-text">После отправки формы наш менеджер свяжется с вами в течение 2 часов для подтверждения записи.</span></p>
-                    </div>
-                </div>
-            </div>
+
+        <div class="form-note-content">
+            <h4><i class="fas fa-info-circle"></i> Важная информация</h4>
+            <p class="form-notice">
+                <span class="red-text">После отправки формы наш менеджер свяжется с вами в течение 2 часов для подтверждения записи.</span>
+            </p>
         </div>
+    </div>
+</div>
     </section>
 
     <!-- Footer -->
