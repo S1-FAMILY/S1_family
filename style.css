@@ -2706,7 +2706,7 @@ a {
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
-                url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+                url('4.jpg') center/cover no-repeat;
     padding: 120px 0 60px;
     overflow: hidden;
 }
@@ -2742,13 +2742,15 @@ a {
     width: 100%;
 }
 
+/* ОБНОВЛЕННЫЙ ЗАГОЛОВОК - В ОДНУ СТРОКУ */
 .hero-title {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 0; /* Убрали отступ между S1 и family */
     margin-bottom: 12px;
     line-height: 1;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .logo-s1-large {
@@ -2774,7 +2776,7 @@ a {
     letter-spacing: 2px;
     line-height: 0.9;
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 0; /* Убрали отступ слева */
 }
 
 .hero-subtitle-main {
