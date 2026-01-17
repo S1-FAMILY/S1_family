@@ -84,17 +84,28 @@
         </ul>
     </div>
 
-<!-- Hero Section -->
+<!-- Hero Section (ОБНОВЛЕННЫЙ) -->
 <section class="hero" id="home">
     <div class="container hero-container">
-        <div class="hero-content">
+        <!-- Верхняя часть: картинка и заголовок рядом (только на мобильных) -->
+        <div class="hero-top-section">
+            <div class="hero-image-wrapper">
+                <img src="главная-лого-сейчас_стоит.png" 
+                     alt="Танцевальный коллектив S1 family" 
+                     class="hero-logo-image"
+                     loading="lazy">
+            </div>
+            
             <div class="hero-title-wrapper">
                 <h1 class="hero-title">
-                    <span class="logo-s1-large">S1 family</span><span class="logo-family-large"></span>
+                    <span class="logo-s1-large">S1 family</span>
                 </h1>
                 <span class="hero-subtitle-main">ЦЕНТР ТАНЦА</span>
             </div>
-            
+        </div>
+        
+        <!-- Контент -->
+        <div class="hero-content">
             <p class="hero-description">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
             
             <div class="hero-buttons">
@@ -124,13 +135,6 @@
                     <span class="stat-label">наград</span>
                 </div>
             </div>
-        </div>
-        
-        <div class="hero-image-wrapper">
-            <img src="главная-лого-сейчас_стоит.png" 
-                 alt="Танцевальный коллектив S1 family" 
-                 class="hero-logo-image"
-                 loading="lazy">
         </div>
     </div>
 </section>
@@ -206,7 +210,7 @@
         </div>
     </section>
 
-    <!-- Groups Section (Обновленная) -->
+    <!-- Groups Section (ОБНОВЛЕННЫЙ с горизонтальной прокруткой) -->
     <section class="section groups white-section" id="groups">
         <div class="container">
             <div class="section-header">
@@ -220,26 +224,31 @@
                     <h3 class="groups-category-title">
                         <i class="fas fa-spinner"></i> Break Dance
                     </h3>
-                    <div class="groups-grid">
-                        <div class="group-card">
-                            <h4>Break Dance Kids</h4>
-                            <p class="group-age">5-7 лет</p>
-                            <p class="group-level">Начальный уровень</p>
-                            <div class="group-badge">🔥 Популярно</div>
+                    <div class="groups-scroll-container">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <h4>Break Dance Kids</h4>
+                                <p class="group-age">5-7 лет</p>
+                                <p class="group-level">Начальный уровень</p>
+                                <div class="group-badge">🔥 Популярно</div>
+                            </div>
+                            
+                            <div class="group-card">
+                                <h4>Break Dance Junior</h4>
+                                <p class="group-age">7-15 лет</p>
+                                <p class="group-level">Средний уровень</p>
+                            </div>
+                            
+                            <div class="group-card">
+                                <h4>Break Dance Pro</h4>
+                                <p class="group-age">15+ лет</p>
+                                <p class="group-level">Продвинутый уровень</p>
+                                <div class="group-badge">🏆 Профи</div>
+                            </div>
                         </div>
-                        
-                        <div class="group-card">
-                            <h4>Break Dance Junior</h4>
-                            <p class="group-age">7-15 лет</p>
-                            <p class="group-level">Средний уровень</p>
-                        </div>
-                        
-                        <div class="group-card">
-                            <h4>Break Dance Pro</h4>
-                            <p class="group-age">15+ лет</p>
-                            <p class="group-level">Продвинутый уровень</p>
-                            <div class="group-badge">🏆 Профи</div>
-                        </div>
+                    </div>
+                    <div class="groups-scroll-hint">
+                        <i class="fas fa-arrow-left"></i> прокрутите, чтобы увидеть все группы <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
                 
@@ -248,32 +257,37 @@
                     <h3 class="groups-category-title">
                         <i class="fas fa-music"></i> Hip-Hop
                     </h3>
-                    <div class="groups-grid">
-                        <div class="group-card">
-                            <h4>Hip-Hop Kids</h4>
-                            <p class="group-age">5-7 лет</p>
-                            <p class="group-level">Начальный уровень</p>
-                            <div class="group-badge">⭐ Для малышей</div>
+                    <div class="groups-scroll-container">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <h4>Hip-Hop Kids</h4>
+                                <p class="group-age">5-7 лет</p>
+                                <p class="group-level">Начальный уровень</p>
+                                <div class="group-badge">⭐ Для малышей</div>
+                            </div>
+                            
+                            <div class="group-card">
+                                <h4>Hip-Hop Junior</h4>
+                                <p class="group-age">7-11 лет</p>
+                                <p class="group-level">Базовый уровень</p>
+                            </div>
+                            
+                            <div class="group-card">
+                                <h4>Hip-Hop Teens</h4>
+                                <p class="group-age">12-15 лет</p>
+                                <p class="group-level">Средний уровень</p>
+                            </div>
+                            
+                            <div class="group-card">
+                                <h4>Hip-Hop Pro</h4>
+                                <p class="group-age">16+ лет</p>
+                                <p class="group-level">Продвинутый уровень</p>
+                                <div class="group-badge">🏆 Профи</div>
+                            </div>
                         </div>
-                        
-                        <div class="group-card">
-                            <h4>Hip-Hop Junior</h4>
-                            <p class="group-age">7-11 лет</p>
-                            <p class="group-level">Базовый уровень</p>
-                        </div>
-                        
-                        <div class="group-card">
-                            <h4>Hip-Hop Teens</h4>
-                            <p class="group-age">12-15 лет</p>
-                            <p class="group-level">Средний уровень</p>
-                        </div>
-                        
-                        <div class="group-card">
-                            <h4>Hip-Hop Pro</h4>
-                            <p class="group-age">16+ лет</p>
-                            <p class="group-level">Продвинутый уровень</p>
-                            <div class="group-badge">🏆 Профи</div>
-                        </div>
+                    </div>
+                    <div class="groups-scroll-hint">
+                        <i class="fas fa-arrow-left"></i> прокрутите, чтобы увидеть все группы <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
                 
@@ -282,13 +296,18 @@
                     <h3 class="groups-category-title">
                         <i class="fas fa-globe-africa"></i> Afro
                     </h3>
-                    <div class="groups-grid">
-                        <div class="group-card">
-                            <h4>Afro</h4>
-                            <p class="group-age">7+ лет</p>
-                            <p class="group-level">Любой уровень</p>
-                            <div class="group-badge">🌍 Энергия</div>
+                    <div class="groups-scroll-container">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <h4>Afro</h4>
+                                <p class="group-age">7+ лет</p>
+                                <p class="group-level">Любой уровень</p>
+                                <div class="group-badge">🌍 Энергия</div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="groups-scroll-hint">
+                        <i class="fas fa-arrow-left"></i> прокрутите, чтобы увидеть все группы <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
                 
@@ -297,13 +316,18 @@
                     <h3 class="groups-category-title">
                         <i class="fas fa-bolt"></i> Freestyle
                     </h3>
-                    <div class="groups-grid">
-                        <div class="group-card">
-                            <h4>Freestyle</h4>
-                            <p class="group-age">7+ лет</p>
-                            <p class="group-level">Любой уровень</p>
-                            <div class="group-badge">✨ Импровизация</div>
+                    <div class="groups-scroll-container">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <h4>Freestyle</h4>
+                                <p class="group-age">7+ лет</p>
+                                <p class="group-level">Любой уровень</p>
+                                <div class="group-badge">✨ Импровизация</div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="groups-scroll-hint">
+                        <i class="fas fa-arrow-left"></i> прокрутите, чтобы увидеть все группы <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
                 
@@ -312,13 +336,18 @@
                     <h3 class="groups-category-title">
                         <i class="fas fa-user-check"></i> Индивидуальные занятия
                     </h3>
-                    <div class="groups-grid">
-                        <div class="group-card">
-                            <h4>Персональные тренировки</h4>
-                            <p class="group-age">Любой возраст</p>
-                            <p class="group-level">Индивидуальный подход</p>
-                            <div class="group-badge">👑 VIP</div>
+                    <div class="groups-scroll-container">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <h4>Персональные тренировки</h4>
+                                <p class="group-age">Любой возраст</p>
+                                <p class="group-level">Индивидуальный подход</p>
+                                <div class="group-badge">👑 VIP</div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="groups-scroll-hint">
+                        <i class="fas fa-arrow-left"></i> прокрутите, чтобы увидеть все группы <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
             </div>

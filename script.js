@@ -301,232 +301,6 @@ function setupScrollToTop(scrollToTopBtn) {
     });
 }
 
-// Слайдер отзывов (полностью переписанный)
-function setupReviewsSlider() {
-    console.log('🔄 Инициализация слайдера отзывов...');
-    
-    const track = document.getElementById('reviewsTrack');
-    const prevBtn = document.getElementById('reviewsPrev');
-    const nextBtn = document.getElementById('reviewsNext');
-    
-    if (!track || !prevBtn || !nextBtn) {
-        console.error('❌ Элементы слайдера не найдены');
-        return;
-    }
-    
-    const items = track.querySelectorAll('.review-item');
-    if (items.length === 0) {
-        console.error('❌ Нет элементов для слайдера');
-        return;
-    }
-    
-    console.log(`✅ Найдено ${items.length} отзывов`);
-    
-    let currentSlide = 0;
-    let autoSlideInterval;
-    let isAnimating = false;
-    
-    // Рассчитываем количество видимых слайдов в зависимости от ширины экрана
-    const getVisibleSlides = () => {
-        const width = window.innerWidth;
-        if (width < 768) return 1; // Мобильные
-        if (width < 1024) return 2; // Планшеты
-        return 3; // Десктоп
-    };
-    
-    // Рассчитываем максимальный слайд
-    const getMaxSlide = () => {
-        const visibleSlides = getVisibleSlides();
-        return Math.max(0, items.length - visibleSlides);
-    };
-    
-    // Обновление позиции слайдера
-    const updateSliderPosition = (instant = false) => {
-        if (isAnimating) return;
-        
-        isAnimating = true;
-        
-        // Рассчитываем смещение
-        const itemWidth = items[0].offsetWidth;
-        const gap = 20; // Примерный gap между элементами
-        const visibleSlides = getVisibleSlides();
-        const maxSlide = getMaxSlide();
-        
-        // Ограничиваем currentSlide
-        currentSlide = Math.max(0, Math.min(currentSlide, maxSlide));
-        
-        // Рассчитываем смещение
-        const offset = currentSlide * (itemWidth + gap) * -1;
-        
-        // Применяем анимацию
-        track.style.transition = instant ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        track.style.transform = `translateX(${offset}px)`;
-        
-        // Обновляем состояние кнопок
-        prevBtn.disabled = currentSlide === 0;
-        nextBtn.disabled = currentSlide >= maxSlide;
-        prevBtn.classList.toggle('disabled', currentSlide === 0);
-        nextBtn.classList.toggle('disabled', currentSlide >= maxSlide);
-        
-        // Завершаем анимацию
-        setTimeout(() => {
-            isAnimating = false;
-        }, 500);
-        
-        console.log(`📊 Слайд: ${currentSlide}/${maxSlide}, Смещение: ${offset}px`);
-    };
-    
-    // Перейти к следующему слайду
-    const nextSlide = () => {
-        if (isAnimating) return;
-        
-        const maxSlide = getMaxSlide();
-        if (currentSlide < maxSlide) {
-            currentSlide++;
-            updateSliderPosition();
-        } else {
-            // Если достигли конца, возвращаемся к началу
-            currentSlide = 0;
-            updateSliderPosition();
-        }
-    };
-    
-    // Перейти к предыдущему слайду
-    const prevSlide = () => {
-        if (isAnimating) return;
-        
-        if (currentSlide > 0) {
-            currentSlide--;
-            updateSliderPosition();
-        } else {
-            // Если в начале, переходим к концу
-            const maxSlide = getMaxSlide();
-            currentSlide = maxSlide;
-            updateSliderPosition();
-        }
-    };
-    
-    // Автопрокрутка
-    const startAutoSlide = () => {
-        stopAutoSlide();
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 4000);
-    };
-    
-    const stopAutoSlide = () => {
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
-    };
-    
-    // Обработчики событий для кнопок
-    nextBtn.addEventListener('click', () => {
-        stopAutoSlide();
-        nextSlide();
-        setTimeout(startAutoSlide, 5000);
-    });
-    
-    prevBtn.addEventListener('click', () => {
-        stopAutoSlide();
-        prevSlide();
-        setTimeout(startAutoSlide, 5000);
-    });
-    
-    // Обработка свайпа на мобильных
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const swipeThreshold = 50;
-    
-    track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        stopAutoSlide();
-    });
-    
-    track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Свайп влево - следующий слайд
-                nextSlide();
-            } else {
-                // Свайп вправо - предыдущий слайд
-                prevSlide();
-            }
-        }
-        
-        setTimeout(startAutoSlide, 3000);
-    });
-    
-    // Остановка автопрокрутки при наведении
-    track.addEventListener('mouseenter', stopAutoSlide);
-    track.addEventListener('mouseleave', startAutoSlide);
-    
-    // Обработка ресайза окна
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Пересчитываем позицию при изменении размера окна
-            const maxSlide = getMaxSlide();
-            if (currentSlide > maxSlide) {
-                currentSlide = maxSlide;
-            }
-            updateSliderPosition(true); // Без анимации
-        }, 250);
-    });
-    
-    // Инициализация
-    updateSliderPosition(true);
-    startAutoSlide();
-    
-    console.log('✅ Слайдер отзывов успешно инициализирован');
-}
-
-// Дополнительные обработчики событий
-function addEventListeners(elements) {
-    // Закрытие мобильного меню при клике вне его
-    if (elements.mobileMenu) {
-        elements.mobileMenu.addEventListener('click', (event) => {
-            if (event.target === elements.mobileMenu) {
-                elements.mobileMenu.classList.remove('active');
-                if (elements.mobileMenuBtn) {
-                    elements.mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                }
-                elements.mobileMenu.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-    
-    // Закрытие мобильного меню при нажатии Escape
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && elements.mobileMenu && elements.mobileMenu.classList.contains('active')) {
-            elements.mobileMenu.classList.remove('active');
-            if (elements.mobileMenuBtn) {
-                elements.mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-            elements.mobileMenu.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-    });
-}
-
-// ===== ЗАПУСК ПРИЛОЖЕНИЯ =====
-// Проверяем что DOM загружен
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-    // DOM уже загружен
-    initializeApp();
-}
-
-
-
-
 // ===== СЛАЙДЕР ОТЗЫВОВ (Стрелки вместо автопереключения) =====
 function setupReviewsSlider() {
     console.log('🔄 Инициализация слайдера с ручным управлением...');
@@ -777,4 +551,42 @@ function setupReviewsSlider() {
     });
     
     return slider;
+}
+
+// Дополнительные обработчики событий
+function addEventListeners(elements) {
+    // Закрытие мобильного меню при клике вне его
+    if (elements.mobileMenu) {
+        elements.mobileMenu.addEventListener('click', (event) => {
+            if (event.target === elements.mobileMenu) {
+                elements.mobileMenu.classList.remove('active');
+                if (elements.mobileMenuBtn) {
+                    elements.mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+                elements.mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Закрытие мобильного меню при нажатии Escape
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && elements.mobileMenu && elements.mobileMenu.classList.contains('active')) {
+            elements.mobileMenu.classList.remove('active');
+            if (elements.mobileMenuBtn) {
+                elements.mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+            elements.mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// ===== ЗАПУСК ПРИЛОЖЕНИЯ =====
+// Проверяем что DOM загружен
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+    // DOM уже загружен
+    initializeApp();
 }

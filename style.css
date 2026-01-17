@@ -2210,9 +2210,6 @@ a {
     }
 }
 
-
-
-
 /* Исправленный слайдер отзывов */
 .reviews-slider {
     position: relative;
@@ -2347,9 +2344,6 @@ a {
         height: 280px;
     }
 }
-
-
-
 
 /* ===== REVIEWS SECTION (Стрелки вместо точек) ===== */
 .reviews-wrapper {
@@ -2697,8 +2691,6 @@ a {
     }
 }
 
-
-
 /* ===== HERO SECTION (ОБНОВЛЕННЫЙ) ===== */
 .hero {
     position: relative;
@@ -3007,470 +2999,369 @@ a {
     }
 }
 
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ГЛАВНОЙ СЕКЦИИ ===== */
+
+/* Скрываем верхний ряд на десктопе */
+.hero-top-section {
+    display: none;
+}
+
+/* Только для мобильных (до 768px) */
 @media (max-width: 768px) {
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
+    /* Показываем верхний ряд на мобильных */
+    .hero-top-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        margin-bottom: 15px !important;
+        width: 100% !important;
     }
     
-    .hero-buttons .btn {
-        width: 100%;
-        max-width: 300px;
+    /* Скрываем старый заголовок на мобильных */
+    .hero .hero-title {
+        display: none !important;
     }
     
-    .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        justify-content: center;
-        margin-top: var(--spacing-md);
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+    .hero .hero-subtitle-main {
+        display: none !important;
     }
     
-    .stat-item {
-        width: 100%;
-        min-width: auto;
-        max-width: none;
-        aspect-ratio: 1;
-        padding: 12px 8px;
-        margin: 0;
-        min-height: 100px;
-    }
-    
-    .stat-number {
-        font-size: clamp(1.8rem, 4vw, 2.2rem);
-        margin-bottom: 0.3rem;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-        letter-spacing: 0.5px;
-        line-height: 1.2;
-    }
-    
-    .hero-logo-image {
-        max-width: 350px;
-    }
-}
-
-@media (max-width: 576px) {
+    /* Герой секция - компактный вид */
     .hero {
-        padding: 90px 0 30px;
-        min-height: auto;
-        padding-bottom: 60px;
-    }
-    
-    .hero-logo-image {
-        max-width: 300px;
-        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
-    }
-    
-    .logo-s1-large,
-    .logo-family-large {
-        font-size: clamp(2rem, 5.5vw, 3rem);
-    }
-    
-    .hero-subtitle-main {
-        font-size: clamp(1rem, 2.2vw, 1.3rem);
-        letter-spacing: 1.5px;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-    
-    .hero-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        max-width: 280px;
-    }
-    
-    .stat-item {
-        padding: 10px 6px;
-        min-height: 90px;
-    }
-    
-    .stat-number {
-        font-size: 1.6rem;
-    }
-    
-    .stat-label {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 400px) {
-    .hero-logo-image {
-        max-width: 280px;
-    }
-    
-    .hero-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        max-width: 260px;
-    }
-    
-    .stat-item {
-        padding: 8px 5px;
-        min-height: 85px;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-    }
-    
-    .hero-title {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .logo-family-large {
-        margin-left: 0;
-    }
-}
-
-/* Анимация появления элементов */
-@keyframes fadeInUpHero {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLogo {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.hero-content {
-    animation: fadeInUpHero 0.8s ease 0.2s both;
-}
-
-.hero-logo-image {
-    animation: fadeInLogo 0.8s ease 0.4s both;
-}
-
-.hero-stats {
-    animation: fadeInUpHero 0.8s ease 0.6s both;
-}
-
-
-
-
-
-/* ===== МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ===== */
-
-/* ===== ИСПРАВЛЕНИЕ ГЛАВНОЙ СЕКЦИИ ДЛЯ МОБИЛЬНЫХ ===== */
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 100px 0 30px !important; /* Уменьшаем отступы сверху и снизу */
-        min-height: auto !important; /* Убираем фиксированную высоту */
+        padding: 90px 0 30px !important;
+        min-height: auto !important;
     }
     
     .hero-container {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important; /* РАЗРЕШИЛИ минимальный разрыв */
-        padding-top: 0 !important;
+        gap: 5px !important; /* Минимальный разрыв */
     }
     
+    /* Картинка слева */
     .hero-image-wrapper {
-        order: 1 !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-bottom: 10px !important; /* Уменьшили отступ под фото */
-        padding-top: 0 !important;
+        flex: 0 0 120px !important; /* Фиксированная ширина */
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 !important;
     }
     
     .hero-logo-image {
-        max-width: 300px !important;
-        height: auto !important;
-        margin: 0 auto !important;
-        border-radius: 12px !important;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-    }
-    
-    .hero-content {
-        order: 2 !important;
         width: 100% !important;
-        padding: 0 15px !important;
-        margin-top: 5px !important; /* ПРИЖАЛИ текст к картинке */
-        text-align: center !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
     
+    /* Текст справа от картинки */
     .hero-title-wrapper {
-        margin-bottom: 12px !important; /* Уменьшили отступ под заголовком */
+        flex: 1 !important;
+        text-align: left !important;
     }
     
     .hero-title {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
-        gap: 2px !important; /* Минимальный разрыв между S1 и family */
-        margin-bottom: 8px !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        margin-bottom: 5px !important;
     }
     
     .logo-s1-large {
-        font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+        font-family: var(--font-secondary) !important;
+        font-weight: 800 !important;
+        font-size: 1.8rem !important;
+        background: var(--silver-gradient) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        color: transparent !important;
+        letter-spacing: 1px !important;
         line-height: 1 !important;
-    }
-    
-    .logo-family-large {
-        font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
-        line-height: 1 !important;
-        margin-left: 0 !important;
+        margin-bottom: 2px !important;
     }
     
     .hero-subtitle-main {
-        font-size: clamp(1rem, 3vw, 1.3rem) !important;
-        letter-spacing: 1.5px !important;
-        margin-top: 5px !important;
-        margin-bottom: 10px !important;
+        font-family: var(--font-primary) !important;
+        font-weight: 300 !important;
+        font-size: 0.9rem !important;
+        color: var(--white) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        margin-top: 0 !important;
+        opacity: 0.9 !important;
+    }
+    
+    /* Описание под картинкой+текстом */
+    .hero-content {
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
     }
     
     .hero-description {
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
         line-height: 1.5 !important;
-        margin-bottom: 20px !important;
-        padding: 0 5px !important;
+        margin-bottom: 15px !important;
+        color: var(--gray-light) !important;
+        text-align: left !important;
     }
     
+    /* Кнопки в строку */
     .hero-buttons {
-        margin-bottom: 20px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
         gap: 10px !important;
+        margin-bottom: 15px !important;
     }
     
     .hero-buttons .btn {
-        min-width: 100% !important;
-        max-width: 280px !important;
-        padding: 12px 20px !important;
-        font-size: 0.9rem !important;
+        flex: 1 !important;
+        min-width: 140px !important;
+        padding: 10px 15px !important;
+        font-size: 0.85rem !important;
     }
     
+    /* Статистика - компактная */
     .hero-stats {
-        margin-top: 20px !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        max-width: 260px !important;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important;
+        margin-top: 15px !important;
     }
     
     .stat-item {
-        padding: 8px 6px !important;
-        min-height: 85px !important;
+        padding: 8px 5px !important;
+        min-height: 70px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 8px !important;
     }
     
     .stat-number {
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
         margin-bottom: 3px !important;
     }
     
     .stat-label {
         font-size: 0.7rem !important;
+        line-height: 1.2 !important;
     }
 }
 
-/* Дополнительные исправления для очень маленьких экранов */
+/* Для очень маленьких экранов */
 @media (max-width: 576px) {
-    .hero {
-        padding: 90px 0 25px !important;
+    .hero-top-section {
+        gap: 12px !important;
     }
     
     .hero-image-wrapper {
-        margin-bottom: 8px !important;
+        flex: 0 0 100px !important;
+        width: 100px !important;
+        height: 100px !important;
     }
     
-    .hero-logo-image {
-        max-width: 280px !important;
+    .logo-s1-large {
+        font-size: 1.6rem !important;
     }
     
-    .hero-content {
-        margin-top: 3px !important;
-    }
-    
-    .hero-title {
-        margin-bottom: 6px !important;
-    }
-    
-    .hero-description {
-        font-size: 0.9rem !important;
-        margin-bottom: 18px !important;
+    .hero-subtitle-main {
+        font-size: 0.8rem !important;
     }
     
     .hero-buttons {
-        margin-bottom: 18px !important;
+        flex-direction: column !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
     }
 }
 
 @media (max-width: 400px) {
-    .hero {
-        padding: 85px 0 20px !important;
+    .hero-image-wrapper {
+        flex: 0 0 90px !important;
+        width: 90px !important;
+        height: 90px !important;
     }
     
-    .hero-logo-image {
-        max-width: 260px !important;
-    }
-    
-    .hero-content {
-        margin-top: 2px !important;
-        padding: 0 10px !important;
-    }
-    
-    .logo-s1-large,
-    .logo-family-large {
-        font-size: clamp(1.8rem, 5.5vw, 2.2rem) !important;
-    }
-    
-    .hero-subtitle-main {
-        font-size: 0.95rem !important;
-    }
-    
-    .hero-description {
-        font-size: 0.85rem !important;
+    .logo-s1-large {
+        font-size: 1.5rem !important;
     }
 }
 
-/* Убираем возможные анимации которые могут создавать задержки */
-@media (max-width: 768px) {
-    .hero-content,
-    .hero-logo-image,
-    .hero-stats {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    
-    /* Убираем лишние эффекты на мобильных для скорости */
-    .hero::before,
-    .hero-image-wrapper::before {
-        display: none !important;
-    }
-}
+/* ===== КОМПАКТНЫЕ ГРУППЫ НА МОБИЛЬНЫХ ===== */
 
-/* 2. Компактные группы в мобильной версии */
 @media (max-width: 768px) {
     .groups-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px !important; /* Уменьшаем расстояние между категориями */
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
     }
     
     .groups-category {
         margin-bottom: 15px !important;
         padding-bottom: 15px !important;
+        border-bottom: 1px solid var(--accent-silver-light) !important;
+    }
+    
+    .groups-category:last-child {
+        border-bottom: none !important;
     }
     
     .groups-category-title {
         font-size: 1.2rem !important;
-        margin-bottom: 15px !important;
-        padding: 10px 0 !important;
+        margin-bottom: 12px !important;
+        padding: 8px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    
+    .groups-category-title i {
+        font-size: 1.3rem !important;
+        color: var(--accent-silver) !important;
+    }
+    
+    /* Горизонтальная прокрутка групп */
+    .groups-scroll-container {
+        position: relative !important;
+        overflow: hidden !important;
     }
     
     .groups-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; /* Более узкие карточки */
-        gap: 12px !important;
+        display: flex !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        gap: 10px !important;
+        padding: 5px 0 10px 0 !important;
+        scrollbar-width: thin !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
     }
     
+    .groups-grid::-webkit-scrollbar {
+        height: 4px !important;
+    }
+    
+    .groups-grid::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05) !important;
+        border-radius: 2px !important;
+    }
+    
+    .groups-grid::-webkit-scrollbar-thumb {
+        background: var(--accent-silver) !important;
+        border-radius: 2px !important;
+    }
+    
+    /* Компактные карточки групп */
     .group-card {
-        padding: 12px 10px !important;
-        min-height: 140px !important; /* Уменьшаем высоту */
+        flex: 0 0 auto !important;
+        width: 150px !important;
+        min-height: 130px !important;
+        padding: 12px !important;
         border-radius: 10px !important;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid var(--gray-lighter) !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .group-card h4 {
         font-size: 0.95rem !important;
         margin-bottom: 8px !important;
-        min-height: auto !important;
-        line-height: 1.2;
+        min-height: 2.8rem !important;
+        line-height: 1.3 !important;
+        color: var(--black) !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
     }
     
     .group-age {
         font-size: 0.85rem !important;
-        padding: 3px 8px !important;
-        margin-bottom: 5px !important;
+        padding: 4px 8px !important;
+        margin-bottom: 6px !important;
+        background: var(--white) !important;
+        color: var(--gray-dark) !important;
+        border: 1px solid var(--accent-silver-light) !important;
+        border-radius: 15px !important;
+        align-self: flex-start !important;
     }
     
     .group-level {
         font-size: 0.8rem !important;
         margin-bottom: 8px !important;
+        color: var(--gray) !important;
+        line-height: 1.4 !important;
     }
     
     .group-badge {
-        font-size: 0.7rem !important;
-        padding: 3px 8px !important;
+        font-size: 0.75rem !important;
+        padding: 4px 8px !important;
+        margin-top: auto !important;
+        align-self: flex-start !important;
+    }
+    
+    /* Индикатор прокрутки */
+    .groups-scroll-hint {
+        text-align: center !important;
+        margin-top: 5px !important;
+        font-size: 0.8rem !important;
+        color: var(--gray) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+    }
+    
+    .groups-scroll-hint i {
+        font-size: 0.9rem !important;
+        color: var(--accent-silver) !important;
     }
 }
 
 @media (max-width: 576px) {
-    .groups-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Всегда 2 в ряд */
-        gap: 10px !important;
-    }
-    
     .group-card {
-        padding: 10px 8px !important;
-        min-height: 130px !important;
+        width: 140px !important;
+        min-height: 120px !important;
+        padding: 10px !important;
     }
     
     .group-card h4 {
         font-size: 0.9rem !important;
+        min-height: 2.5rem !important;
+    }
+    
+    .groups-category-title {
+        font-size: 1.1rem !important;
     }
 }
 
 @media (max-width: 400px) {
-    .groups-grid {
-        grid-template-columns: 1fr !important; /* На очень узких - 1 в ряд */
-        gap: 8px !important;
+    .group-card {
+        width: 130px !important;
+        min-height: 115px !important;
     }
     
-    .group-card {
-        min-height: 120px !important;
-        padding: 8px !important;
+    .groups-grid {
+        gap: 8px !important;
     }
 }
 
-/* 3. Стили для отзывов в виде скриншотов */
-.review-screenshot {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-light);
-    transition: all 0.3s ease;
-    border: 1px solid var(--gray-lighter);
-}
-
-.review-screenshot:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-    border-color: var(--accent-silver);
-}
+/* ===== СТИЛИ ДЛЯ ОТЗЫВОВ В ВИДЕ СКРИНШОТОВ ===== */
 
 .review-quote-img {
     background: var(--white);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     padding: var(--spacing-md);
     box-shadow: var(--shadow-light);
     border: 1px solid var(--gray-lighter);
@@ -3478,17 +3369,61 @@ a {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    transition: all 0.3s ease;
+}
+
+.review-quote-img:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-silver);
+}
+
+.review-screenshot {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-author {
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--gray-lighter);
+    width: 100%;
+    text-align: center;
+}
+
+.review-author strong {
+    display: block;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.review-author span {
+    display: block;
+    color: var(--gray);
+    font-size: 0.8rem;
+    font-weight: 300;
 }
 
 /* Для мобильных - компактные отзывы */
 @media (max-width: 768px) {
     .review-quote-img {
         padding: var(--spacing-sm);
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
     }
     
     .review-screenshot {
-        max-height: 250px;
-        object-fit: contain;
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .review-screenshot {
+        height: 180px;
     }
 }
