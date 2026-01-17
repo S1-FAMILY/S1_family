@@ -13,6 +13,71 @@ function initializeApp() {
         setupHeader(elements.header);
         setupMobileMenu(elements.mobileMenuBtn, elements.mobileMenu, elements.mobileMenuClose);
         setupCounters(elements.statNumbers);
+        // Добавьте этот код в функцию initializeApp после setupCounters
+function setupMobileHeroStats() {
+    if (window.innerWidth <= 768) {
+        const mobileStatNumbers = document.querySelectorAll('.stat-number-mobile');
+        if (mobileStatNumbers && mobileStatNumbers.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count')) || 0;
+                        
+                        if (target > 0) {
+                            animateCounter(counter, target);
+                        }
+                        
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            mobileStatNumbers.forEach(counter => observer.observe(counter));
+        }
+    }
+}
+
+// В функции initializeApp добавьте:
+function initializeApp() {
+    console.log('🚀 Инициализация S1 Family Dance Center...');
+    
+    try {
+        // Получаем все необходимые элементы
+        const elements = getAllElements();
+        
+        // Инициализируем все компоненты
+        setupHeader(elements.header);
+        setupMobileMenu(elements.mobileMenuBtn, elements.mobileMenu, elements.mobileMenuClose);
+        setupCounters(elements.statNumbers);
+        setupMobileHeroStats(); // Новая функция
+        setupSmoothScroll();
+        setupScrollAnimations();
+        setupActiveNav(elements.navLinks, elements.mobileNavLinks);
+        setupLazyLoading();
+        setupYearUpdate(elements.yearElements);
+        setupScrollToTop(elements.scrollToTop);
+        
+        // Слайдер отзывов инициализируем после полной загрузки DOM
+        setTimeout(() => {
+            setupReviewsSlider();
+        }, 100);
+        
+        // Добавляем обработчики событий
+        addEventListeners(elements);
+        
+        // Обработчик изменения размера окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                setupMobileHeroStats();
+            }
+        });
+        
+        console.log('✅ S1 Family успешно инициализирован!');
+    } catch (error) {
+        console.error('❌ Ошибка при инициализации:', error);
+    }
+}
         setupSmoothScroll();
         setupScrollAnimations();
         setupActiveNav(elements.navLinks, elements.mobileNavLinks);
