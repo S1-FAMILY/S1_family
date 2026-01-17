@@ -3000,15 +3000,17 @@ a {
 }
 
 /* ===== МОБИЛЬНАЯ ВЕРСИЯ ГЛАВНОЙ СЕКЦИИ ===== */
-
-/* Скрываем верхний ряд на десктопе */
-.hero-top-section {
-    display: none;
-}
-
-/* Только для мобильных (до 768px) */
 @media (max-width: 768px) {
-    /* Показываем верхний ряд на мобильных */
+    /* Скрываем оригинальную структуру на мобильных */
+    .hero .hero-title-wrapper {
+        display: none !important;
+    }
+    
+    .hero .hero-image {
+        display: none !important;
+    }
+    
+    /* Показываем наш компактный вид */
     .hero-top-section {
         display: flex !important;
         align-items: center !important;
@@ -3017,13 +3019,12 @@ a {
         width: 100% !important;
     }
     
-    /* Скрываем старый заголовок на мобильных */
-    .hero .hero-title {
-        display: none !important;
-    }
-    
-    .hero .hero-subtitle-main {
-        display: none !important;
+    .hero-image-wrapper {
+        display: flex !important;
+        flex: 0 0 120px !important;
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 !important;
     }
     
     /* Герой секция - компактный вид */
@@ -3035,15 +3036,7 @@ a {
     .hero-container {
         display: flex !important;
         flex-direction: column !important;
-        gap: 5px !important; /* Минимальный разрыв */
-    }
-    
-    /* Картинка слева */
-    .hero-image-wrapper {
-        flex: 0 0 120px !important; /* Фиксированная ширина */
-        width: 120px !important;
-        height: 120px !important;
-        margin: 0 !important;
+        gap: 5px !important;
     }
     
     .hero-logo-image {
@@ -3055,7 +3048,7 @@ a {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
     
-    /* Текст справа от картинки */
+    /* Остальные стили для мобильных */
     .hero-title-wrapper {
         flex: 1 !important;
         text-align: left !important;
@@ -3093,7 +3086,6 @@ a {
         opacity: 0.9 !important;
     }
     
-    /* Описание под картинкой+текстом */
     .hero-content {
         width: 100% !important;
         padding: 0 !important;
@@ -3108,7 +3100,6 @@ a {
         text-align: left !important;
     }
     
-    /* Кнопки в строку */
     .hero-buttons {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -3123,7 +3114,6 @@ a {
         font-size: 0.85rem !important;
     }
     
-    /* Статистика - компактная */
     .hero-stats {
         display: grid !important;
         grid-template-columns: repeat(4, 1fr) !important;
