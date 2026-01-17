@@ -84,20 +84,28 @@
         </ul>
     </div>
 
-<!-- Hero Section (ОБНОВЛЕННЫЙ) -->
-<section class="hero" id="home">
-    <div class="container hero-container">
-        <!-- Десктопная версия (скрыта на мобильных) -->
-        <div class="hero-desktop">
-            <div class="hero-content">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <!-- Верхняя часть: картинка и заголовок рядом (только на мобильных) -->
+            <div class="hero-top-section">
+                <div class="hero-image-wrapper">
+                    <img src="главная-лого-сейчас_стоит.png" 
+                         alt="Танцевальный коллектив S1 family" 
+                         class="hero-logo-image"
+                         loading="lazy">
+                </div>
+                
                 <div class="hero-title-wrapper">
                     <h1 class="hero-title">
-                        <span class="logo-s1-large">S1</span>
-                        <span class="logo-family-large">family</span>
+                        <span class="logo-s1-large">S1 family</span>
                     </h1>
                     <span class="hero-subtitle-main">ЦЕНТР ТАНЦА</span>
                 </div>
-                
+            </div>
+            
+            <!-- Контент -->
+            <div class="hero-content">
                 <p class="hero-description">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
                 
                 <div class="hero-buttons">
@@ -128,68 +136,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="hero-image-wrapper">
-                <img src="главная-лого-сейчас_стоит.png" 
-                     alt="Танцевальный коллектив S1 family" 
-                     class="hero-logo-image"
-                     loading="lazy">
-            </div>
         </div>
-        
-        <!-- Мобильная версия (скрыта на десктопе) -->
-        <div class="hero-mobile">
-            <div class="hero-top-section">
-                <div class="hero-image-wrapper-mobile">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Танцевальный коллектив S1 family" 
-                         class="hero-logo-image-mobile"
-                         loading="lazy">
-                </div>
-                
-                <div class="hero-title-wrapper-mobile">
-                    <h1 class="hero-title-mobile">
-                        <span class="logo-s1-large-mobile">S1</span>
-                        <span class="logo-family-large-mobile">family</span>
-                    </h1>
-                    <span class="hero-subtitle-main-mobile">ЦЕНТР ТАНЦА</span>
-                </div>
-            </div>
-            
-            <div class="hero-content-mobile">
-                <p class="hero-description-mobile">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
-                
-                <div class="hero-buttons-mobile">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-calendar-check"></i> Записаться на пробное
-                    </a>
-                    <a href="#directions" class="btn btn-outline">
-                        <i class="fas fa-directions"></i> Направления
-                    </a>
-                </div>
-                
-                <div class="hero-stats-mobile">
-                    <div class="stat-item-mobile">
-                        <span class="stat-number-mobile" data-count="13">0</span>
-                        <span class="stat-label-mobile">лет опыта</span>
-                    </div>
-                    <div class="stat-item-mobile">
-                        <span class="stat-number-mobile" data-count="8">0</span>
-                        <span class="stat-label-mobile">тренеров</span>
-                    </div>
-                    <div class="stat-item-mobile">
-                        <span class="stat-number-mobile" data-count="500">0</span>
-                        <span class="stat-label-mobile">учеников</span>
-                    </div>
-                    <div class="stat-item-mobile">
-                        <span class="stat-number-mobile" data-count="100">0</span>
-                        <span class="stat-label-mobile">наград</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- About Section -->
     <section class="section about" id="about">
@@ -262,7 +210,7 @@
         </div>
     </section>
 
-    <!-- Groups Section (ОБНОВЛЕННЫЙ с горизонтальной прокруткой) -->
+    <!-- Groups Section -->
     <section class="section groups white-section" id="groups">
         <div class="container">
             <div class="section-header">
@@ -406,7 +354,7 @@
         </div>
     </section>
 
-    <!-- Team Section (8 тренеров) -->
+    <!-- Team Section -->
     <section class="section team black-section" id="team">
         <div class="container">
             <div class="section-header">
@@ -547,7 +495,7 @@
         </div>
     </section>
 
-    <!-- Achievements Section (3 блока) -->
+    <!-- Achievements Section -->
     <section class="section achievements silver-section" id="achievements">
         <div class="container">
             <div class="section-header">
@@ -594,7 +542,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section (6 фото) -->
+    <!-- Gallery Section -->
     <section class="section gallery black-section" id="gallery">
         <div class="container">
             <div class="section-header">
@@ -648,178 +596,178 @@
         </div>
     </section>
 
-<!-- Reviews Section -->
-<section class="section reviews white-section" id="reviews">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">ОТЗЫВЫ</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Что говорят наши ученики и их родители</p>
-        </div>
-        
-        <div class="reviews-wrapper">
-            <!-- Кнопка "Назад" -->
-            <button class="review-arrow review-prev" aria-label="Предыдущие отзывы">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <div class="reviews-container">
-                <!-- Группа отзывов 1 (Скриншоты 1-3) -->
-                <div class="review-group active">
-                    <div class="review-quote-img">
-                        <img src="отзыв1.jpg" alt="Отзыв 1" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв2.jpg" alt="Отзыв 2" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв3.jpg" alt="Отзыв 3" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Группа отзывов 2 (Скриншоты 4-6) -->
-                <div class="review-group">
-                    <div class="review-quote-img">
-                        <img src="отзыв4.jpg" alt="Отзыв 4" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв5.jpg" alt="Отзыв 5" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв6.jpg" alt="Отзыв 6" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Группа отзывов 3 (Скриншоты 7-9) -->
-                <div class="review-group">
-                    <div class="review-quote-img">
-                        <img src="отзыв7.jpg" alt="Отзыв 7" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв8.jpg" alt="Отзыв 8" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв9.jpg" alt="Отзыв 9" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Группа отзывов 4 (Скриншоты 10-12) -->
-                <div class="review-group">
-                    <div class="review-quote-img">
-                        <img src="отзыв10.jpg" alt="Отзыв 10" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв11.jpg" alt="Отзыв 11" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв12.jpg" alt="Отзыв 12" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Группа отзывов 5 (Скриншоты 13-15) -->
-                <div class="review-group">
-                    <div class="review-quote-img">
-                        <img src="отзыв13.jpg" alt="Отзыв 13" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв14.jpg" alt="Отзыв 14" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв ученика</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-quote-img">
-                        <img src="отзыв15.jpg" alt="Отзыв 15" class="review-screenshot" loading="lazy">
-                        <div class="review-author">
-                            <strong>Отзыв родителя</strong>
-                            <span>Скриншот из ВК</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Reviews Section -->
+    <section class="section reviews white-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ОТЗЫВЫ</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Что говорят наши ученики и их родители</p>
             </div>
             
-            <!-- Кнопка "Вперед" -->
-            <button class="review-arrow review-next" aria-label="Следующие отзывы">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <div class="reviews-wrapper">
+                <!-- Кнопка "Назад" -->
+                <button class="review-arrow review-prev" aria-label="Предыдущие отзывы">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="reviews-container">
+                    <!-- Группа отзывов 1 (Скриншоты 1-3) -->
+                    <div class="review-group active">
+                        <div class="review-quote-img">
+                            <img src="отзыв1.jpg" alt="Отзыв 1" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв2.jpg" alt="Отзыв 2" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв3.jpg" alt="Отзыв 3" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Группа отзывов 2 (Скриншоты 4-6) -->
+                    <div class="review-group">
+                        <div class="review-quote-img">
+                            <img src="отзыв4.jpg" alt="Отзыв 4" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв5.jpg" alt="Отзыв 5" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв6.jpg" alt="Отзыв 6" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Группа отзывов 3 (Скриншоты 7-9) -->
+                    <div class="review-group">
+                        <div class="review-quote-img">
+                            <img src="отзыв7.jpg" alt="Отзыв 7" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв8.jpg" alt="Отзыв 8" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв9.jpg" alt="Отзыв 9" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Группа отзывов 4 (Скриншоты 10-12) -->
+                    <div class="review-group">
+                        <div class="review-quote-img">
+                            <img src="отзыв10.jpg" alt="Отзыв 10" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв11.jpg" alt="Отзыв 11" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв12.jpg" alt="Отзыв 12" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Группа отзывов 5 (Скриншоты 13-15) -->
+                    <div class="review-group">
+                        <div class="review-quote-img">
+                            <img src="отзыв13.jpg" alt="Отзыв 13" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв14.jpg" alt="Отзыв 14" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв ученика</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                        
+                        <div class="review-quote-img">
+                            <img src="отзыв15.jpg" alt="Отзыв 15" class="review-screenshot" loading="lazy">
+                            <div class="review-author">
+                                <strong>Отзыв родителя</strong>
+                                <span>Скриншот из ВК</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Кнопка "Вперед" -->
+                <button class="review-arrow review-next" aria-label="Следующие отзывы">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Индикатор текущей группы -->
+            <div class="review-counter">
+                <span class="current-group">1</span> / <span class="total-groups">5</span>
+            </div>
+            
+            <!-- Примечание -->
+            <div class="reviews-note">
+                <p>
+                    <i class="fas fa-info-circle"></i>
+                    Это реальные скриншоты отзывов из наших соцсетей
+                </p>
+            </div>
         </div>
-        
-        <!-- Индикатор текущей группы -->
-        <div class="review-counter">
-            <span class="current-group">1</span> / <span class="total-groups">5</span>
-        </div>
-        
-        <!-- Примечание -->
-        <div class="reviews-note">
-            <p>
-                <i class="fas fa-info-circle"></i>
-                Это реальные скриншоты отзывов из наших соцсетей
-            </p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contact Section -->
     <section class="section contact white-section" id="contact">
