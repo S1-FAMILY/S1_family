@@ -3172,3 +3172,323 @@ a {
 .hero-stats {
     animation: fadeInUpHero 0.8s ease 0.6s both;
 }
+
+
+
+
+
+/* ===== МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ===== */
+
+/* ===== ИСПРАВЛЕНИЕ ГЛАВНОЙ СЕКЦИИ ДЛЯ МОБИЛЬНЫХ ===== */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 30px !important; /* Уменьшаем отступы сверху и снизу */
+        min-height: auto !important; /* Убираем фиксированную высоту */
+    }
+    
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important; /* РАЗРЕШИЛИ минимальный разрыв */
+        padding-top: 0 !important;
+    }
+    
+    .hero-image-wrapper {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 10px !important; /* Уменьшили отступ под фото */
+        padding-top: 0 !important;
+    }
+    
+    .hero-logo-image {
+        max-width: 300px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .hero-content {
+        order: 2 !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+        margin-top: 5px !important; /* ПРИЖАЛИ текст к картинке */
+        text-align: center !important;
+    }
+    
+    .hero-title-wrapper {
+        margin-bottom: 12px !important; /* Уменьшили отступ под заголовком */
+    }
+    
+    .hero-title {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2px !important; /* Минимальный разрыв между S1 и family */
+        margin-bottom: 8px !important;
+    }
+    
+    .logo-s1-large {
+        font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+        line-height: 1 !important;
+    }
+    
+    .logo-family-large {
+        font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+        line-height: 1 !important;
+        margin-left: 0 !important;
+    }
+    
+    .hero-subtitle-main {
+        font-size: clamp(1rem, 3vw, 1.3rem) !important;
+        letter-spacing: 1.5px !important;
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 20px !important;
+        padding: 0 5px !important;
+    }
+    
+    .hero-buttons {
+        margin-bottom: 20px !important;
+        gap: 10px !important;
+    }
+    
+    .hero-buttons .btn {
+        min-width: 100% !important;
+        max-width: 280px !important;
+        padding: 12px 20px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-stats {
+        margin-top: 20px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        max-width: 260px !important;
+    }
+    
+    .stat-item {
+        padding: 8px 6px !important;
+        min-height: 85px !important;
+        border-radius: 8px !important;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem !important;
+        margin-bottom: 3px !important;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Дополнительные исправления для очень маленьких экранов */
+@media (max-width: 576px) {
+    .hero {
+        padding: 90px 0 25px !important;
+    }
+    
+    .hero-image-wrapper {
+        margin-bottom: 8px !important;
+    }
+    
+    .hero-logo-image {
+        max-width: 280px !important;
+    }
+    
+    .hero-content {
+        margin-top: 3px !important;
+    }
+    
+    .hero-title {
+        margin-bottom: 6px !important;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem !important;
+        margin-bottom: 18px !important;
+    }
+    
+    .hero-buttons {
+        margin-bottom: 18px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero {
+        padding: 85px 0 20px !important;
+    }
+    
+    .hero-logo-image {
+        max-width: 260px !important;
+    }
+    
+    .hero-content {
+        margin-top: 2px !important;
+        padding: 0 10px !important;
+    }
+    
+    .logo-s1-large,
+    .logo-family-large {
+        font-size: clamp(1.8rem, 5.5vw, 2.2rem) !important;
+    }
+    
+    .hero-subtitle-main {
+        font-size: 0.95rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Убираем возможные анимации которые могут создавать задержки */
+@media (max-width: 768px) {
+    .hero-content,
+    .hero-logo-image,
+    .hero-stats {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* Убираем лишние эффекты на мобильных для скорости */
+    .hero::before,
+    .hero-image-wrapper::before {
+        display: none !important;
+    }
+}
+
+/* 2. Компактные группы в мобильной версии */
+@media (max-width: 768px) {
+    .groups-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px !important; /* Уменьшаем расстояние между категориями */
+    }
+    
+    .groups-category {
+        margin-bottom: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    
+    .groups-category-title {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+        padding: 10px 0 !important;
+    }
+    
+    .groups-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; /* Более узкие карточки */
+        gap: 12px !important;
+    }
+    
+    .group-card {
+        padding: 12px 10px !important;
+        min-height: 140px !important; /* Уменьшаем высоту */
+        border-radius: 10px !important;
+    }
+    
+    .group-card h4 {
+        font-size: 0.95rem !important;
+        margin-bottom: 8px !important;
+        min-height: auto !important;
+        line-height: 1.2;
+    }
+    
+    .group-age {
+        font-size: 0.85rem !important;
+        padding: 3px 8px !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .group-level {
+        font-size: 0.8rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .group-badge {
+        font-size: 0.7rem !important;
+        padding: 3px 8px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .groups-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Всегда 2 в ряд */
+        gap: 10px !important;
+    }
+    
+    .group-card {
+        padding: 10px 8px !important;
+        min-height: 130px !important;
+    }
+    
+    .group-card h4 {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .groups-grid {
+        grid-template-columns: 1fr !important; /* На очень узких - 1 в ряд */
+        gap: 8px !important;
+    }
+    
+    .group-card {
+        min-height: 120px !important;
+        padding: 8px !important;
+    }
+}
+
+/* 3. Стили для отзывов в виде скриншотов */
+.review-screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-lighter);
+}
+
+.review-screenshot:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-silver);
+}
+
+.review-quote-img {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--gray-lighter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+/* Для мобильных - компактные отзывы */
+@media (max-width: 768px) {
+    .review-quote-img {
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-lg);
+    }
+    
+    .review-screenshot {
+        max-height: 250px;
+        object-fit: contain;
+    }
+}
