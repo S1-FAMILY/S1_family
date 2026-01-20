@@ -495,6 +495,101 @@ a {
 }
 
 /* ===== HERO ===== */
+/* ===== ОТДЕЛЬНЫЕ ИЗОБРАЖЕНИЯ ДЛЯ МОБИЛЬНЫХ И ДЕСКТОПА ===== */
+
+/* Скрываем мобильное изображение по умолчанию */
+.hero-logo-image.mobile-image {
+    display: none;
+}
+
+/* Показываем десктопное изображение по умолчанию */
+.hero-logo-image.desktop-image {
+    display: block;
+}
+
+/* Для мобильных устройств - показываем мобильное изображение */
+@media (max-width: 1024px) {
+    .hero-logo-image.mobile-image {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .hero-logo-image.desktop-image {
+        display: none;
+    }
+    
+    /* Убираем лишнюю надпись "ЦЕНТР ТАНЦА" на мобильных */
+    .desktop-subtitle {
+        display: none;
+    }
+    
+    /* Настройки для мобильного изображения */
+    .hero-image-wrapper {
+        width: 280px !important;
+        height: 280px !important;
+        margin: 0 auto 20px auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .hero-logo-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        border-radius: 20px !important;
+        filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.4)) !important;
+    }
+}
+
+/* Для планшетов (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero-logo-image.mobile-image {
+        max-width: 350px !important;
+    }
+    
+    .hero-image-wrapper {
+        width: 350px !important;
+        height: 350px !important;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 576px) {
+    .hero-logo-image.mobile-image {
+        max-width: 240px !important;
+    }
+    
+    .hero-image-wrapper {
+        width: 240px !important;
+        height: 240px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-logo-image.mobile-image {
+        max-width: 220px !important;
+    }
+    
+    .hero-image-wrapper {
+        width: 220px !important;
+        height: 220px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-logo-image.mobile-image {
+        max-width: 200px !important;
+    }
+    
+    .hero-image-wrapper {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
 /* ===== ИСПРАВЛЕННЫЙ HERO БЛОК ===== */
 
 .hero {
