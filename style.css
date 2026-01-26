@@ -1067,15 +1067,15 @@ a {
     line-height: 1.6;
 }
 
-/* ===== GROUPS (ОБНОВЛЕННАЯ) ===== */
+/* ===== GROUPS (ЧЕРНЫЙ ФОН) ===== */
 .groups {
-    background: var(--white);
+    background: var(--black);
 }
 
 .groups-category {
     margin-bottom: var(--spacing-xl);
     padding-bottom: var(--spacing-lg);
-    border-bottom: 2px solid var(--gray-lighter);
+    border-bottom: 2px solid var(--gray-dark);
 }
 
 .groups-category:last-child {
@@ -1087,7 +1087,7 @@ a {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    color: var(--black);
+    color: var(--white);
     margin-bottom: var(--spacing-lg);
     font-size: 1.5rem;
     padding: var(--spacing-sm) 0;
@@ -1096,7 +1096,7 @@ a {
 
 .groups-category-title i {
     font-size: 1.8rem;
-    color: var(--gray);
+    color: var(--accent-silver);
 }
 
 .groups-grid {
@@ -1182,6 +1182,207 @@ a {
     background: var(--silver-gradient);
     color: var(--black);
     margin-top: auto;
+}
+
+/* Индикатор прокрутки */
+.groups-scroll-hint {
+    text-align: center;
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.groups-scroll-hint i {
+    color: var(--accent-silver);
+    font-size: 1rem;
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 768px) {
+    .groups-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 25px !important;
+    }
+    
+    .groups-category {
+        margin-bottom: 20px !important;
+        padding-bottom: 20px !important;
+        border-bottom: 1px solid var(--gray-dark) !important;
+    }
+    
+    .groups-category:last-child {
+        border-bottom: none !important;
+    }
+    
+    .groups-category-title {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px !important;
+        padding: 10px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        color: var(--white) !important;
+        border-bottom: 1px solid var(--accent-silver) !important;
+    }
+    
+    .groups-category-title i {
+        font-size: 1.4rem !important;
+        color: var(--accent-silver) !important;
+    }
+    
+    /* Горизонтальная прокрутка групп */
+    .groups-scroll-container {
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .groups-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        gap: 15px !important;
+        padding: 10px 5px 15px 5px !important;
+        scrollbar-width: thin !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    .groups-grid::-webkit-scrollbar {
+        height: 4px !important;
+    }
+    
+    .groups-grid::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 2px !important;
+    }
+    
+    .groups-grid::-webkit-scrollbar-thumb {
+        background: var(--accent-silver) !important;
+        border-radius: 2px !important;
+    }
+    
+    .group-card {
+        flex: 0 0 auto !important;
+        width: 160px !important;
+        min-height: 140px !important;
+        padding: 15px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        border: 1px solid var(--gray-lighter) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        transition: all 0.3s ease !important;
+        background: var(--white-lighter) !important;
+    }
+    
+    .group-card:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .group-card h4 {
+        font-size: 1rem !important;
+        margin-bottom: 10px !important;
+        min-height: 2.8rem !important;
+        line-height: 1.3 !important;
+        color: var(--black) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        font-weight: 600 !important;
+    }
+    
+    .group-age {
+        font-size: 0.9rem !important;
+        padding: 6px 12px !important;
+        margin-bottom: 8px !important;
+        background: var(--white) !important;
+        color: var(--black) !important;
+        border: 1px solid var(--accent-silver-light) !important;
+        border-radius: 15px !important;
+        font-weight: 600 !important;
+        width: fit-content !important;
+    }
+    
+    .group-level {
+        font-size: 0.85rem !important;
+        margin-bottom: 10px !important;
+        color: var(--gray) !important;
+        line-height: 1.4 !important;
+        flex-grow: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .group-badge {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+        margin-top: auto !important;
+        background: var(--silver-gradient) !important;
+        color: var(--black) !important;
+        border-radius: 15px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        width: fit-content !important;
+    }
+    
+    /* Индикатор прокрутки */
+    .groups-scroll-hint {
+        text-align: center !important;
+        margin-top: 8px !important;
+        font-size: 0.85rem !important;
+        color: var(--gray-light) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    .groups-scroll-hint i {
+        font-size: 1rem !important;
+        color: var(--accent-silver) !important;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 576px) {
+    .group-card {
+        width: 150px !important;
+        min-height: 135px !important;
+        padding: 12px !important;
+    }
+    
+    .group-card h4 {
+        font-size: 0.95rem !important;
+        min-height: 2.6rem !important;
+    }
+    
+    .groups-category-title {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .group-card {
+        width: 140px !important;
+        min-height: 130px !important;
+        padding: 10px !important;
+    }
+    
+    .group-card h4 {
+        font-size: 0.9rem !important;
+        min-height: 2.4rem !important;
+    }
 }
 
 /* ===== TEAM ===== */
