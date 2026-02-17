@@ -598,7 +598,7 @@ a {
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
-                url('4.jpg') center/cover no-repeat;
+                url('фон_главная.jpg') center/cover no-repeat;
     padding: 120px 0 60px;
     overflow: hidden;
 }
@@ -3143,7 +3143,7 @@ a {
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
-                url('4.jpg') center/cover no-repeat;
+                url('фон_главная.jpg') center/cover no-repeat;
     padding: 120px 0 60px;
     overflow: hidden;
 }
