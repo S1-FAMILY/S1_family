@@ -4016,7 +4016,7 @@ a {
 }
 
 
-/* ===== ИСПРАВЛЕНИЕ ЦЕНТРИРОВАНИЯ ФОТО НА МОБИЛЬНЫХ ===== */
+/* ===== ИСПРАВЛЕНИЕ ЦЕНТРИРОВАНИЯ МОБИЛЬНОГО ФОТО ===== */
 @media (max-width: 1024px) {
     .hero-container {
         display: flex !important;
@@ -4030,28 +4030,49 @@ a {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
         width: 280px !important;
         height: 280px !important;
+        margin: 0 auto 20px auto !important;
         position: relative !important;
-        left: 0 !important; /* Сбрасываем возможные смещения */
+        left: 0 !important;
         right: 0 !important;
-        transform: none !important; /* Убираем трансформации */
     }
     
-    .hero-logo-image {
-        margin: 0 auto !important;
+    /* Специально для мобильного изображения */
+    .hero-logo-image.mobile-image {
         display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
         position: relative !important;
         left: 0 !important;
         right: 0 !important;
         transform: scale(1.1) !important;
-        object-fit: contain !important;
     }
     
-    /* Убираем возможные conflicting стили */
-    .hero-logo-image.mobile-image {
+    /* Скрываем десктопное изображение на мобильных */
+    .hero-logo-image.desktop-image {
+        display: none !important;
+    }
+    
+    /* Центрирование всего контента */
+    .hero-content {
+        text-align: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    .hero-title {
+        justify-content: center !important;
+    }
+    
+    .hero-buttons {
+        justify-content: center !important;
+    }
+    
+    .hero-stats {
+        justify-content: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -4077,5 +4098,12 @@ a {
     .hero-image-wrapper {
         width: 220px !important;
         height: 220px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-image-wrapper {
+        width: 200px !important;
+        height: 200px !important;
     }
 }
