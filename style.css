@@ -4016,3 +4016,66 @@ a {
 }
 
 
+/* ===== ИСПРАВЛЕНИЕ ЦЕНТРИРОВАНИЯ ФОТО НА МОБИЛЬНЫХ ===== */
+@media (max-width: 1024px) {
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .hero-image-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 280px !important;
+        height: 280px !important;
+        position: relative !important;
+        left: 0 !important; /* Сбрасываем возможные смещения */
+        right: 0 !important;
+        transform: none !important; /* Убираем трансформации */
+    }
+    
+    .hero-logo-image {
+        margin: 0 auto !important;
+        display: block !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: scale(1.1) !important;
+        object-fit: contain !important;
+    }
+    
+    /* Убираем возможные conflicting стили */
+    .hero-logo-image.mobile-image {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* Для планшетов */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero-image-wrapper {
+        width: 350px !important;
+        height: 350px !important;
+    }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 576px) {
+    .hero-image-wrapper {
+        width: 240px !important;
+        height: 240px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-image-wrapper {
+        width: 220px !important;
+        height: 220px !important;
+    }
+}
