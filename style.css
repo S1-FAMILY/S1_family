@@ -769,6 +769,29 @@ a {
     filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
 }
 
+/* ===== УЛУЧШЕНИЕ ЧИТАЕМОСТИ ТЕКСТА В БЛОКЕ "О НАС" ===== */
+.about-text p {
+    color: #1a1a1a !important; /* Почти черный */
+    font-weight: 500 !important; /* Medium жирность */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 1 !important;
+    background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.about-text h3 {
+    color: #000000 !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
 /* ===== АДАПТИВНОСТЬ ===== */
 
 @media (max-width: 1024px) {
@@ -1065,6 +1088,121 @@ a {
     color: var(--gray);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+/* ===== DIRECTIONS С ФОНОВЫМИ ИЗОБРАЖЕНИЯМИ И ЭФФЕКТОМ УВЕЛИЧЕНИЯ ===== */
+.directions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.direction-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    padding: 0; /* Убираем паддинг, добавим его на content */
+    text-align: center;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    border: 2px solid var(--gray-lighter);
+    background-color: #f5f5f5; /* Запасной фон */
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Псевдоэлемент для фонового изображения */
+.direction-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    opacity: 0.7; /* Прозрачность фото - 70% (хорошо видно, текст читаем) */
+}
+
+/* Затемнение поверх фото для лучшей читаемости текста */
+.direction-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Легкое затемнение (20%) */
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+/* Контент поверх фона */
+.direction-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--spacing-lg);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Эффект при наведении - увеличение фото */
+.direction-card:hover::before {
+    transform: scale(1.15); /* Увеличение фото на 15% */
+}
+
+/* При наведении немного уменьшаем затемнение, чтобы фото стало ярче */
+.direction-card:hover::after {
+    background: rgba(0, 0, 0, 0.1); /* Еще светлее при наведении (10%) */
+}
+
+/* Стили для текста (делаем их контрастными на фоне фото) */
+.direction-content .direction-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.3s ease;
+    color: var(--white); /* Белые иконки для контраста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+}
+
+.direction-content h3 {
+    color: var(--white); /* Белый текст */
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+}
+
+.direction-content p {
+    color: var(--white); /* Белый текст */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+}
+
+/* Эффект при наведении на иконку */
+.direction-card:hover .direction-icon {
+    transform: scale(1.2);
+}
+
+/* Анимация появления */
+.direction-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Убираем стандартные фоны */
+.direction-card {
+    background: transparent !important;
 }
 
 /* ===== GROUPS (ЧЕРНЫЙ ФОН) ===== */

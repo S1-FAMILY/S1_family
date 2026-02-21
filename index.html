@@ -84,65 +84,61 @@
         </ul>
     </div>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="container hero-container">
-        <!-- Контент -->
-        <div class="hero-content">
-            <div class="hero-title-wrapper">
-                <h1 class="hero-title">
-                    <span class="logo-s1-large">S1 family</span>
-                </h1>
-                <span class="hero-subtitle-main desktop-subtitle">ЦЕНТР ТАНЦА</span>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-title">
+                        <span class="logo-s1-large">S1 family</span>
+                    </h1>
+                    <span class="hero-subtitle-main desktop-subtitle">ЦЕНТР ТАНЦА</span>
+                </div>
+                
+                <p class="hero-description">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Записаться на пробное
+                    </a>
+                    <a href="#directions" class="btn btn-outline">
+                        <i class="fas fa-directions"></i> Направления
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="13">0</span>
+                        <span class="stat-label">лет опыта</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">тренеров</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">учеников</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">наград</span>
+                    </div>
+                </div>
             </div>
             
-            <p class="hero-description">Профессиональное обучение танцам для всех возрастов. Стань частью нашей большой танцевальной семьи и открой в себе новые возможности.</p>
-            
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-calendar-check"></i> Записаться на пробное
-                </a>
-                <a href="#directions" class="btn btn-outline">
-                    <i class="fas fa-directions"></i> Направления
-                </a>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number" data-count="13">0</span>
-                    <span class="stat-label">лет опыта</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="8">0</span>
-                    <span class="stat-label">тренеров</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="500">0</span>
-                    <span class="stat-label">учеников</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="100">0</span>
-                    <span class="stat-label">наград</span>
-                </div>
+            <div class="hero-image-wrapper">
+                <img src="главная-лого-сейчас_стоит2.png" 
+                     alt="Танцевальный коллектив S1 family" 
+                     class="hero-logo-image desktop-image"
+                     loading="lazy">
+                
+                <img src="главная-лого-сейчас_стоит.png" 
+                     alt="Танцевальный коллектив S1 family" 
+                     class="hero-logo-image mobile-image"
+                     loading="lazy">
             </div>
         </div>
-        
-        <!-- ПРАВАЯ КОЛОНКА С ЛОГОТИПОМ -->
-        <div class="hero-image-wrapper">
-            <!-- Десктопное изображение (скрыто на мобильных) -->
-            <img src="главная-лого-сейчас_стоит2.png" 
-                 alt="Танцевальный коллектив S1 family" 
-                 class="hero-logo-image desktop-image"
-                 loading="lazy">
-            
-            <!-- Мобильное изображение (скрыто на десктопе) -->
-            <img src="главная-лого-сейчас_стоит.png" 
-                 alt="Танцевальный коллектив S1 family" 
-                 class="hero-logo-image mobile-image"
-                 loading="lazy">
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- About Section -->
     <section class="section about" id="about">
@@ -171,7 +167,7 @@
         </div>
     </section>
 
-    <!-- Directions Section -->
+    <!-- Directions Section С ФОТО -->
     <section class="section directions gray-section" id="directions">
         <div class="container">
             <div class="section-header">
@@ -180,36 +176,48 @@
             </div>
             
             <div class="directions-grid">
-                <div class="direction-card">
-                    <div class="direction-icon">
-                        <i class="fas fa-music"></i>
+                <!-- Hip-Hop карточка с фото -->
+                <div class="direction-card" style="--bg-image: url('фон-хип-хоп.jpg');">
+                    <div class="direction-content">
+                        <div class="direction-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Hip-Hop</h3>
+                        <p>Основа уличной культуры. Развиваем чувство ритма, уверенность и индивидуальный стиль в классическом хип-хопе.</p>
                     </div>
-                    <h3>Hip-Hop</h3>
-                    <p>Основа уличной культуры. Развиваем чувство ритма, уверенность и индивидуальный стиль в классическом хип-хопе.</p>
                 </div>
                 
-                <div class="direction-card">
-                    <div class="direction-icon">
-                        <i class="fas fa-spinner"></i>
+                <!-- Break Dance карточка с фото и новым значком -->
+                <div class="direction-card" style="--bg-image: url('фон-брейк-данс.jpg');">
+                    <div class="direction-content">
+                        <div class="direction-icon">
+                            <i class="fas fa-rotate"></i> <!-- Новый значок для Break Dance -->
+                        </div>
+                        <h3>Break Dance</h3>
+                        <p>Акробатический уличный танец, включенный в программу Олимпийских игр. Силовые элементы, фризы и работа на полу.</p>
                     </div>
-                    <h3>Break Dance</h3>
-                    <p>Акробатический уличный танец, включенный в программу Олимпийских игр. Силовые элементы, фризы и работа на полу.</p>
                 </div>
                 
-                <div class="direction-card">
-                    <div class="direction-icon">
-                        <i class="fas fa-bolt"></i>
+                <!-- Freestyle карточка с фото -->
+                <div class="direction-card" style="--bg-image: url('фон-фристайл.jpg');">
+                    <div class="direction-content">
+                        <div class="direction-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Freestyle<br>(Hip-Hop)</h3>
+                        <p>Свободная импровизация в стиле хип-хоп. Развитие креативности, музыкальности и спонтанного самовыражения.</p>
                     </div>
-                    <h3>Freestyle<br>(Hip-Hop)</h3>
-                    <p>Свободная импровизация в стиле хип-хоп. Развитие креативности, музыкальности и спонтанного самовыражения.</p>
                 </div>
                 
-                <div class="direction-card">
-                    <div class="direction-icon">
-                        <i class="fas fa-globe-africa"></i>
+                <!-- Afro карточка с фото -->
+                <div class="direction-card" style="--bg-image: url('фон-афро.jpg');">
+                    <div class="direction-content">
+                        <div class="direction-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Afro</h3>
+                        <p>Энергичные танцы африканских народов. Развитие чувства ритма, пластики и эмоциональной выразительности.</p>
                     </div>
-                    <h3>Afro</h3>
-                    <p>Энергичные танцы африканских народов. Развитие чувства ритма, пластики и эмоциональной выразительности.</p>
                 </div>
             </div>
         </div>
@@ -227,7 +235,7 @@
                 <!-- Break Dance -->
                 <div class="groups-category">
                     <h3 class="groups-category-title">
-                        <i class="fas fa-spinner"></i> Break Dance
+                        <i class="fas fa-rotate"></i> Break Dance
                     </h3>
                     <div class="groups-scroll-container">
                         <div class="groups-grid">
@@ -556,46 +564,23 @@
             </div>
             
             <div class="gallery-grid">
-                <!-- Фото 1 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Тренировка в студии" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Тренировка в студии" loading="lazy">
                 </div>
-                
-                <!-- Фото 2 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Выступление на чемпионате" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Выступление на чемпионате" loading="lazy">
                 </div>
-                
-                <!-- Фото 3 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Командное фото" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Командное фото" loading="lazy">
                 </div>
-                
-                <!-- Фото 4 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Победа на турнире" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Победа на турнире" loading="lazy">
                 </div>
-                
-                <!-- Фото 5 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Мастер-класс" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Мастер-класс" loading="lazy">
                 </div>
-                
-                <!-- Фото 6 -->
                 <div class="gallery-item">
-                    <img src="главная-лого-сейчас_стоит.png" 
-                         alt="Гала-концерт" 
-                         loading="lazy">
+                    <img src="главная-лого-сейчас_стоит.png" alt="Гала-концерт" loading="lazy">
                 </div>
             </div>
         </div>
@@ -611,13 +596,11 @@
             </div>
             
             <div class="reviews-wrapper">
-                <!-- Кнопка "Назад" -->
                 <button class="review-arrow review-prev" aria-label="Предыдущие отзывы">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 
                 <div class="reviews-container">
-                    <!-- Группа отзывов 1 (Скриншоты 1-3) -->
                     <div class="review-group active">
                         <div class="review-quote-img">
                             <img src="отзыв1.jpg" alt="Отзыв 1" class="review-screenshot" loading="lazy">
@@ -644,7 +627,6 @@
                         </div>
                     </div>
                     
-                    <!-- Группа отзывов 2 (Скриншоты 4-6) -->
                     <div class="review-group">
                         <div class="review-quote-img">
                             <img src="отзыв4.jpg" alt="Отзыв 4" class="review-screenshot" loading="lazy">
@@ -670,101 +652,17 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Группа отзывов 3 (Скриншоты 7-9) -->
-                    <div class="review-group">
-                        <div class="review-quote-img">
-                            <img src="отзыв7.jpg" alt="Отзыв 7" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв родителя</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв8.jpg" alt="Отзыв 8" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв ученика</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв9.jpg" alt="Отзыв 9" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв родителя</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Группа отзывов 4 (Скриншоты 10-12) -->
-                    <div class="review-group">
-                        <div class="review-quote-img">
-                            <img src="отзыв10.jpg" alt="Отзыв 10" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв ученика</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв11.jpg" alt="Отзыв 11" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв родителя</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв12.jpg" alt="Отзыв 12" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв ученика</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Группа отзывов 5 (Скриншоты 13-15) -->
-                    <div class="review-group">
-                        <div class="review-quote-img">
-                            <img src="отзыв13.jpg" alt="Отзыв 13" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв родителя</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв14.jpg" alt="Отзыв 14" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв ученика</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                        
-                        <div class="review-quote-img">
-                            <img src="отзыв15.jpg" alt="Отзыв 15" class="review-screenshot" loading="lazy">
-                            <div class="review-author">
-                                <strong>Отзыв родителя</strong>
-                                <span>Скриншот из ВК</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Кнопка "Вперед" -->
                 <button class="review-arrow review-next" aria-label="Следующие отзывы">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
             
-            <!-- Индикатор текущей группы -->
             <div class="review-counter">
-                <span class="current-group">1</span> / <span class="total-groups">5</span>
+                <span class="current-group">1</span> / <span class="total-groups">2</span>
             </div>
             
-            <!-- Примечание -->
             <div class="reviews-note">
                 <p>
                     <i class="fas fa-info-circle"></i>
@@ -833,16 +731,13 @@
                         <h3>МЫ В СОЦСЕТЯХ</h3>
                         <div class="social-links">
                             <a href="https://vk.ru/s1_family" class="social-link" target="_blank" rel="noopener">
-                                <i class="fab fa-vk"></i>
-                                ВКонтакте
+                                <i class="fab fa-vk"></i> ВКонтакте
                             </a>
                             <a href="https://t.me/s1familyStavropol" class="social-link" target="_blank" rel="noopener">
-                                <i class="fab fa-telegram"></i>
-                                Telegram
+                                <i class="fab fa-telegram"></i> Telegram
                             </a>
                             <a href="https://www.instagram.com/s1family_stavropol?igsh=MWtoYXlhMnEwMmlwNA==" class="social-link" target="_blank" rel="noopener">
-                                <i class="fab fa-instagram"></i>
-                                Instagram
+                                <i class="fab fa-instagram"></i> Instagram
                             </a>
                         </div>
                     </div>
@@ -854,7 +749,6 @@
                         <p>Заполните форму и мы свяжемся с вами для уточнения деталей</p>
                     </div>
                     
-                    <!-- Яндекс Форма -->
                     <div class="yandex-form-wrapper">
                         <iframe src="https://forms.yandex.ru/cloud/695f604f505690160b902b48" 
                                 width="100%" 
@@ -867,15 +761,16 @@
                                 style="border-radius: 12px;">
                         </iframe>
                     </div>
-
-        <div class="form-note-content">
-            <h4><i class="fas fa-info-circle"></i> Важная информация</h4>
-            <p class="form-notice">
-                <span class="red-text">После отправки формы наш менеджер свяжется с вами в течение 2 часов для подтверждения записи.</span>
-            </p>
+                    
+                    <div class="form-note-content">
+                        <h4><i class="fas fa-info-circle"></i> Важная информация</h4>
+                        <p class="form-notice">
+                            <span class="red-text">После отправки формы наш менеджер свяжется с вами в течение 2 часов</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
     </section>
 
     <!-- Footer -->
