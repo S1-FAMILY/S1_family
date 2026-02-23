@@ -4264,3 +4264,36 @@ a {
         min-height: 280px;
     }
 }
+
+
+/* ===== ПРОСТОЕ ИСПРАВЛЕНИЕ ДЛЯ НАПРАВЛЕНИЙ НА МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    .direction-card {
+        position: relative !important;
+        min-height: 250px !important;
+        background-image: var(--bg-image) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    
+    .direction-card::before {
+        display: none !important;
+    }
+    
+    .direction-card::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 1 !important;
+    }
+    
+    .direction-content {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+}
