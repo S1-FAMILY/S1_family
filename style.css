@@ -1037,60 +1037,11 @@ a {
     display: block;
 }
 
-/* ===== DIRECTIONS (ЧЕРНО-БЕЛЫЕ) ===== */
+/* ===== DIRECTIONS - ИСПРАВЛЕННЫЙ БЛОК ===== */
 .directions {
     background: var(--white-lighter);
 }
 
-.directions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.direction-card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    text-align: center;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-light);
-    border: 2px solid var(--gray-lighter);
-}
-
-.direction-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow);
-    border-color: var(--accent-silver);
-}
-
-.direction-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
-    transition: transform 0.3s ease;
-    color: var(--gray);
-}
-
-.direction-card:hover .direction-icon {
-    transform: scale(1.2);
-    color: var(--black);
-}
-
-.direction-card h3 {
-    color: var(--black);
-    margin-bottom: var(--spacing-sm);
-    font-size: 1.4rem;
-}
-
-.direction-card p {
-    color: var(--gray);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* ===== DIRECTIONS С ФОТОГРАФИЯМИ И ЭФФЕКТОМ УВЕЛИЧЕНИЯ ===== */
 .directions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1106,11 +1057,11 @@ a {
     overflow: hidden;
     box-shadow: var(--shadow-light);
     border: 2px solid var(--gray-lighter);
-    background-color: #f5f5f5;
     min-height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent !important;
 }
 
 /* Псевдоэлемент для фонового изображения */
@@ -1179,18 +1130,16 @@ a {
     color: var(--white);
     margin-bottom: var(--spacing-sm);
     font-size: 1.4rem;
-    /* ИСПРАВЛЕНО: увеличил жирность и усилил тень */
-    font-weight: 700; /* Было 600 (normal), стало 700 (bold) */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Сделал тень темнее и больше */
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .direction-content p {
     color: var(--white);
     font-size: 0.95rem;
     line-height: 1.6;
-    /* ИСПРАВЛЕНО: увеличил жирность и усилил тень */
-    font-weight: 500; /* Было 400 (normal), стало 500 (medium) */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Сделал тень темнее и больше */
+    font-weight: 500;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 /* Эффект при наведении на иконку */
@@ -1204,9 +1153,66 @@ a {
     opacity: 0;
 }
 
-/* Убираем стандартные фоны */
-.direction-card {
-    background: transparent !important;
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ НАПРАВЛЕНИЙ ===== */
+@media (max-width: 768px) {
+    .directions-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .direction-card {
+        min-height: 250px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 15px !important;
+    }
+    
+    .direction-card::before {
+        opacity: 0.8 !important;
+    }
+    
+    .direction-card::after {
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .direction-card:hover::before {
+        transform: scale(1.15) !important;
+    }
+    
+    .direction-card:hover::after {
+        background: rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .direction-content {
+        padding: 30px 20px !important;
+    }
+    
+    .direction-content h3 {
+        margin-bottom: 15px !important;
+    }
+    
+    .direction-content .direction-icon {
+        margin-bottom: 15px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .direction-card {
+        min-height: 220px !important;
+    }
+    
+    .direction-content {
+        padding: 25px 15px !important;
+    }
+    
+    .direction-content h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .direction-content p {
+        font-size: 0.9rem !important;
+    }
 }
 
 /* ===== GROUPS (ЧЕРНЫЙ ФОН) ===== */
@@ -4256,89 +4262,5 @@ a {
     
     .review-quote-img {
         min-height: 280px;
-    }
-}
-
-
-/* ===== ИСПРАВЛЕНИЕ ДЛЯ ФОНОВЫХ ИЗОБРАЖЕНИЙ В НАПРАВЛЕНИЯХ НА МОБИЛЬНЫХ ===== */
-@media (max-width: 768px) {
-    .directions-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-    
-    .direction-card {
-        position: relative !important;
-        min-height: 250px !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: transparent !important;
-        overflow: hidden !important;
-        border-radius: 15px !important;
-    }
-    
-    /* Псевдоэлемент для фонового изображения */
-    .direction-card::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background-image: var(--bg-image) !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        transition: transform 0.6s ease !important;
-        z-index: 0 !important;
-        opacity: 0.8 !important;
-        display: block !important;
-    }
-    
-    /* Затемнение для читаемости текста */
-    .direction-card::after {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: rgba(0, 0, 0, 0.3) !important;
-        z-index: 1 !important;
-        display: block !important;
-    }
-    
-    /* Контент поверх фона */
-    .direction-content {
-        position: relative !important;
-        z-index: 2 !important;
-        padding: 30px 20px !important;
-        color: white !important;
-        height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    .direction-content h3 {
-        color: white !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
-        font-weight: 700 !important;
-        margin-bottom: 15px !important;
-    }
-    
-    .direction-content p {
-        color: white !important;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
-        font-weight: 500 !important;
-    }
-    
-    .direction-content .direction-icon {
-        color: white !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
-        margin-bottom: 15px !important;
     }
 }
