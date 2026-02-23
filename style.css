@@ -4266,22 +4266,21 @@ a {
 }
 
 
-/* ===== ПРОСТОЕ ИСПРАВЛЕНИЕ ДЛЯ НАПРАВЛЕНИЙ НА МОБИЛЬНЫХ ===== */
+/* ===== ПРИНУДИТЕЛЬНОЕ ИСПРАВЛЕНИЕ ===== */
 @media (max-width: 768px) {
-    .direction-card {
-        position: relative !important;
-        min-height: 250px !important;
+    .direction-card[style*="--bg-image"] {
         background-image: var(--bg-image) !important;
         background-size: cover !important;
         background-position: center !important;
-        background-repeat: no-repeat !important;
+        position: relative !important;
     }
     
-    .direction-card::before {
-        display: none !important;
+    .direction-card[style*="--bg-image"] > * {
+        position: relative !important;
+        z-index: 2 !important;
     }
     
-    .direction-card::after {
+    .direction-card[style*="--bg-image"]::after {
         content: '' !important;
         position: absolute !important;
         top: 0 !important;
@@ -4290,10 +4289,5 @@ a {
         height: 100% !important;
         background: rgba(0, 0, 0, 0.3) !important;
         z-index: 1 !important;
-    }
-    
-    .direction-content {
-        position: relative !important;
-        z-index: 2 !important;
     }
 }
