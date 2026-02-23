@@ -1090,7 +1090,7 @@ a {
     line-height: 1.6;
 }
 
-/* ===== DIRECTIONS С ФОНОВЫМИ ИЗОБРАЖЕНИЯМИ И ЭФФЕКТОМ УВЕЛИЧЕНИЯ ===== */
+/* ===== DIRECTIONS С ФОТОГРАФИЯМИ И ЭФФЕКТОМ УВЕЛИЧЕНИЯ ===== */
 .directions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1100,13 +1100,13 @@ a {
 .direction-card {
     position: relative;
     border-radius: var(--radius-lg);
-    padding: 0; /* Убираем паддинг, добавим его на content */
+    padding: 0;
     text-align: center;
     transition: all 0.4s ease;
     overflow: hidden;
     box-shadow: var(--shadow-light);
     border: 2px solid var(--gray-lighter);
-    background-color: #f5f5f5; /* Запасной фон */
+    background-color: #f5f5f5;
     min-height: 320px;
     display: flex;
     align-items: center;
@@ -1127,7 +1127,7 @@ a {
     background-repeat: no-repeat;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 0;
-    opacity: 0.7; /* Прозрачность фото - 70% (хорошо видно, текст читаем) */
+    opacity: 0.7;
 }
 
 /* Затемнение поверх фото для лучшей читаемости текста */
@@ -1138,7 +1138,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* Легкое затемнение (20%) */
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1;
     transition: background 0.3s ease;
 }
@@ -1158,12 +1158,12 @@ a {
 
 /* Эффект при наведении - увеличение фото */
 .direction-card:hover::before {
-    transform: scale(1.15); /* Увеличение фото на 15% */
+    transform: scale(1.15);
 }
 
 /* При наведении немного уменьшаем затемнение, чтобы фото стало ярче */
 .direction-card:hover::after {
-    background: rgba(0, 0, 0, 0.1); /* Еще светлее при наведении (10%) */
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /* Стили для текста (делаем их контрастными на фоне фото) */
@@ -1171,22 +1171,26 @@ a {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
     transition: transform 0.3s ease;
-    color: var(--white); /* Белые иконки для контраста */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .direction-content h3 {
-    color: var(--white); /* Белый текст */
+    color: var(--white);
     margin-bottom: var(--spacing-sm);
     font-size: 1.4rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+    /* ИСПРАВЛЕНО: увеличил жирность и усилил тень */
+    font-weight: 700; /* Было 600 (normal), стало 700 (bold) */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Сделал тень темнее и больше */
 }
 
 .direction-content p {
-    color: var(--white); /* Белый текст */
+    color: var(--white);
     font-size: 0.95rem;
     line-height: 1.6;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+    /* ИСПРАВЛЕНО: увеличил жирность и усилил тень */
+    font-weight: 500; /* Было 400 (normal), стало 500 (medium) */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Сделал тень темнее и больше */
 }
 
 /* Эффект при наведении на иконку */
@@ -1613,6 +1617,64 @@ a {
     color: var(--white);
     font-weight: 600;
 }
+
+/* Стили для соцсетей тренеров - УВЕЛИЧЕННЫЕ КНОПКИ */
+.trainer-social {
+    display: flex;
+    gap: 10px; /* Увеличил расстояние между кнопками */
+    margin-top: 18px; /* Немного увеличил отступ сверху */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.trainer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;  /* Увеличил с 36px до 44px */
+    height: 44px; /* Увеличил с 36px до 44px */
+    background: rgba(255, 255, 255, 0.15); /* Сделал фон чуть ярче */
+    border-radius: 50%;
+    color: var(--accent-silver);
+    font-size: 1.3rem; /* Увеличил размер иконки с 1.1rem до 1.3rem */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Сделал рамку чуть ярче */
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Добавил небольшую тень */
+}
+
+.trainer-social-link:hover {
+    background: var(--silver-gradient);
+    color: var(--black);
+    transform: translateY(-4px); /* Немного увеличил подъем при наведении */
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(192, 192, 192, 0.4); /* Увеличил тень при наведении */
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .trainer-social {
+        justify-content: center;
+        gap: 12px; /* Немного уменьшил расстояние на мобильных */
+        margin-top: 15px;
+    }
+    
+    .trainer-social-link {
+        width: 40px;  /* Немного меньше, чем на десктопе, но все еще крупные */
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .trainer-social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}
+
 
 /* ===== ACHIEVEMENTS ===== */
 .achievements {
@@ -4109,3 +4171,90 @@ a {
 }
 
 
+/* ===== СТИЛИ ДЛЯ ОТЗЫВОВ С ИЗОБРАЖЕНИЯМИ ===== */
+.review-quote-img {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--gray-lighter);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 350px;
+    overflow: hidden;
+}
+
+.review-quote-img:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-silver);
+}
+
+.review-screenshot {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    border: 2px solid var(--gray-lighter);
+    transition: transform 0.3s ease;
+}
+
+.review-quote-img:hover .review-screenshot {
+    transform: scale(1.02);
+}
+
+.review-quote-img .review-author {
+    margin-top: 0;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--gray-lighter);
+}
+
+.review-quote-img .review-author strong {
+    display: block;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.review-quote-img .review-author span {
+    display: block;
+    color: var(--gray);
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+/* Адаптивность для изображений */
+@media (max-width: 1024px) {
+    .review-screenshot {
+        height: 250px;
+    }
+    
+    .review-quote-img {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .review-screenshot {
+        height: 220px;
+    }
+    
+    .review-quote-img {
+        min-height: 300px;
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 576px) {
+    .review-screenshot {
+        height: 200px;
+    }
+    
+    .review-quote-img {
+        min-height: 280px;
+    }
+}
