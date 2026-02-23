@@ -4261,3 +4261,29 @@ a {
         min-height: 280px;
     }
 }
+
+
+/* ===== ПРОСТОЕ ИСПРАВЛЕНИЕ ДЛЯ НАПРАВЛЕНИЙ ===== */
+@media (max-width: 768px) {
+    .direction-card {
+        background-image: var(--bg-image) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        position: relative !important;
+    }
+    
+    .direction-card::before {
+        display: none !important;
+    }
+    
+    .direction-card::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 1 !important;
+    }
+}
