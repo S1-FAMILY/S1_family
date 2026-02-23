@@ -4258,3 +4258,87 @@ a {
         min-height: 280px;
     }
 }
+
+
+/* ===== ИСПРАВЛЕНИЕ ДЛЯ ФОНОВЫХ ИЗОБРАЖЕНИЙ В НАПРАВЛЕНИЯХ НА МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    .directions-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .direction-card {
+        position: relative !important;
+        min-height: 250px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        overflow: hidden !important;
+        border-radius: 15px !important;
+    }
+    
+    /* Псевдоэлемент для фонового изображения */
+    .direction-card::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-image: var(--bg-image) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        transition: transform 0.6s ease !important;
+        z-index: 0 !important;
+        opacity: 0.8 !important;
+        display: block !important;
+    }
+    
+    /* Затемнение для читаемости текста */
+    .direction-card::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 1 !important;
+        display: block !important;
+    }
+    
+    /* Контент поверх фона */
+    .direction-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 30px 20px !important;
+        color: white !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .direction-content h3 {
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+        font-weight: 700 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .direction-content p {
+        color: white !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
+        font-weight: 500 !important;
+    }
+    
+    .direction-content .direction-icon {
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+        margin-bottom: 15px !important;
+    }
+}
