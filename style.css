@@ -4260,121 +4260,7 @@ a {
 }
 
 
-/* ===== ИСПРАВЛЕНИЕ ДЛЯ ФОНОВЫХ ИЗОБРАЖЕНИЙ В НАПРАВЛЕНИЯХ ===== */
-
-/* Базовые стили для всех устройств */
-.directions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.direction-card {
-    position: relative;
-    border-radius: var(--radius-lg);
-    padding: 0;
-    text-align: center;
-    transition: all 0.4s ease;
-    overflow: hidden;
-    box-shadow: var(--shadow-light);
-    border: 2px solid var(--gray-lighter);
-    min-height: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent !important;
-}
-
-/* Псевдоэлемент для фонового изображения */
-.direction-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 0;
-    opacity: 0.7;
-}
-
-/* Затемнение поверх фото для лучшей читаемости текста */
-.direction-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    transition: background 0.3s ease;
-}
-
-/* Контент поверх фона */
-.direction-content {
-    position: relative;
-    z-index: 2;
-    padding: var(--spacing-lg);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Эффект при наведении - увеличение фото */
-.direction-card:hover::before {
-    transform: scale(1.15);
-}
-
-/* При наведении немного уменьшаем затемнение, чтобы фото стало ярче */
-.direction-card:hover::after {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-/* Стили для текста (делаем их контрастными на фоне фото) */
-.direction-content .direction-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
-    transition: transform 0.3s ease;
-    color: var(--white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.direction-content h3 {
-    color: var(--white);
-    margin-bottom: var(--spacing-sm);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-.direction-content p {
-    color: var(--white);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    font-weight: 500;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-}
-
-/* Эффект при наведении на иконку */
-.direction-card:hover .direction-icon {
-    transform: scale(1.2);
-}
-
-/* Анимация появления */
-.direction-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+/* ===== ИСПРАВЛЕНИЕ ДЛЯ ФОНОВЫХ ИЗОБРАЖЕНИЙ В НАПРАВЛЕНИЯХ НА МОБИЛЬНЫХ ===== */
 @media (max-width: 768px) {
     .directions-grid {
         display: flex !important;
@@ -4383,60 +4269,76 @@ a {
     }
     
     .direction-card {
+        position: relative !important;
         min-height: 250px !important;
         width: 100% !important;
         margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        overflow: hidden !important;
         border-radius: 15px !important;
     }
     
-    /* Псевдоэлемент для фонового изображения - принудительно применяем */
+    /* Псевдоэлемент для фонового изображения */
     .direction-card::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-image: var(--bg-image) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        transition: transform 0.6s ease !important;
+        z-index: 0 !important;
         opacity: 0.8 !important;
+        display: block !important;
     }
     
     /* Затемнение для читаемости текста */
     .direction-card::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 1 !important;
+        display: block !important;
     }
     
-    /* При наведении на мобильных */
-    .direction-card:hover::before {
-        transform: scale(1.15) !important;
-    }
-    
-    .direction-card:hover::after {
-        background: rgba(0, 0, 0, 0.15) !important;
-    }
-    
-    /* Контент */
+    /* Контент поверх фона */
     .direction-content {
+        position: relative !important;
+        z-index: 2 !important;
         padding: 30px 20px !important;
+        color: white !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     .direction-content h3 {
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+        font-weight: 700 !important;
         margin-bottom: 15px !important;
-    }
-    
-    .direction-content .direction-icon {
-        margin-bottom: 15px !important;
-    }
-}
-
-/* Для очень маленьких экранов */
-@media (max-width: 576px) {
-    .direction-card {
-        min-height: 220px !important;
-    }
-    
-    .direction-content {
-        padding: 25px 15px !important;
-    }
-    
-    .direction-content h3 {
-        font-size: 1.3rem !important;
     }
     
     .direction-content p {
-        font-size: 0.9rem !important;
+        color: white !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5) !important;
+        font-weight: 500 !important;
+    }
+    
+    .direction-content .direction-icon {
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+        margin-bottom: 15px !important;
     }
 }
